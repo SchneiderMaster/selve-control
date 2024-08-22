@@ -4,6 +4,8 @@
  * changes to the libraries and their usages.
  */
 
+@file:OptIn(DelicateCoroutinesApi::class)
+
 package com.schneidermaster.selvecontrol.presentation
 
 import android.os.Bundle
@@ -16,22 +18,25 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import com.schneidermaster.selvecontrol.presentation.theme.SelveControlTheme
+import com.schneidermaster.selvecontrol.tools.httprequests.get
 import com.schneidermaster.selvecontrol.tools.httprequests.post
+import com.schneidermaster.selvecontrol.tools.shutters.JsonData
+import com.schneidermaster.selvecontrol.tools.shutters.JsonResponse
+import com.schneidermaster.selvecontrol.tools.shutters.Shutter
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import okhttp3.OkHttpClient
 
 class MainActivity : ComponentActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -46,11 +51,12 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(DelicateCoroutinesApi::class)
 @Composable
 fun WearApp() {
 
     val client = OkHttpClient()
+
+    getShutters(client)
 
     SelveControlTheme {
         Box(
@@ -61,7 +67,7 @@ fun WearApp() {
         ) {
             Box(
                 modifier = Modifier
-            ){
+            ) {
                 ScalingLazyColumn {
                     item {
                         Button(
@@ -69,7 +75,11 @@ fun WearApp() {
                                 println("I have been pressed; " + "up")
 
                                 GlobalScope.launch {
-                                    val response = post(client, "http://192.168.188.143/cmd?auth=Auablume", "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"0B\",\"data\":{\"cmd\": \"moveUp\"}}")
+                                    val response = post(
+                                        client,
+                                        "http://192.168.188.143/cmd?auth=Auablume",
+                                        "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"0B\",\"data\":{\"cmd\": \"moveUp\"}}"
+                                    )
                                     println(response.await().body?.string())
                                 }
                             })
@@ -83,7 +93,11 @@ fun WearApp() {
 
                                 println("I have been pressed; " + "down")
                                 GlobalScope.launch {
-                                    val response = post(client, "http://192.168.188.143/cmd?auth=Auablume", "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"0B\",\"data\":{\"cmd\": \"moveDown\"}}")
+                                    val response = post(
+                                        client,
+                                        "http://192.168.188.143/cmd?auth=Auablume",
+                                        "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"0B\",\"data\":{\"cmd\": \"moveDown\"}}"
+                                    )
                                     println(response.await().body?.string())
                                 }
                             })
@@ -92,15 +106,37 @@ fun WearApp() {
                         }
                     }
                 }
-                
             }
         }
     }
 }
 
-@Preview(device = Devices.WEAR_OS_SMALL_ROUND, showSystemUi = true)
-@Composable
-fun DefaultPreview() {
-    WearApp()
-}
+fun getShutters(client: OkHttpClient){
+    GlobalScope.launch {
+        val deferredResponse = get(client, "http://192.168.188.143/cmd?XC_FNC=GetStates&auth=Auablume")
 
+        val response = deferredResponse.await()
+        val jsonResponse = response.body?.string()
+
+        if(jsonResponse != null){
+            val json = Json { ignoreUnknownKeys = true }
+            val jsonResponseObject = json.decodeFromString<JsonResponse>(jsonResponse)
+            println(jsonResponseObject)
+            val devices = jsonResponseObject.XC_SUC
+                .mapNotNull { it as? JsonObject }
+                .filter{it["type"]?.jsonPrimitive?.content == "CM"}
+                .filterIsInstance<JsonData.Cm>()
+                .map{
+                    Shutter(
+                        name = "",
+                        sid = it.sid,
+                        adr = it.adr,
+                        position = it.state?.position
+                    )
+                }
+
+            println(devices)
+        }
+
+    }
+}

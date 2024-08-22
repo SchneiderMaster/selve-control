@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    // other plugins
+    id("org.jetbrains.kotlin.plugin.serialization") version '1.9.0'
 }
 
 android {
@@ -90,5 +92,8 @@ dependencies {
     testImplementation libs.tiles.testing
 
     implementation(libs.okhttp)
+
+    implementation(libs.kotlinx.serialization.json)
+
 
 }
