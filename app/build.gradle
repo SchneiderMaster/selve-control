@@ -88,4 +88,6 @@ dependencies {
     // Use to fetch tiles from a tile provider in your tests
     testImplementation libs.tiles.testing
 
+    implementation(libs.okhttp)
+
 }
