@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "com.schneidermaster.selvecontrol.app-debug-85:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.schneidermaster.selvecontrol.app-main-87:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.schneidermaster.selvecontrol.app-debug-85:/drawable_splash_icon.xml.flat",
+        "source": "com.schneidermaster.selvecontrol.app-main-87:/drawable/splash_icon.xml"
+    },
+    {
+        "merged": "com.schneidermaster.selvecontrol.app-debug-85:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.schneidermaster.selvecontrol.app-main-87:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.schneidermaster.selvecontrol.app-debug-85:/drawable-round_tile_preview.png.flat",
+        "source": "com.schneidermaster.selvecontrol.app-main-87:/drawable-round/tile_preview.png"
+    },
+    {
+        "merged": "com.schneidermaster.selvecontrol.app-debug-85:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.schneidermaster.selvecontrol.app-main-87:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.schneidermaster.selvecontrol.app-debug-85:/drawable_tile_preview.png.flat",
+        "source": "com.schneidermaster.selvecontrol.app-main-87:/drawable/tile_preview.png"
+    },
+    {
+        "merged": "com.schneidermaster.selvecontrol.app-debug-85:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.schneidermaster.selvecontrol.app-main-87:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.schneidermaster.selvecontrol.app-debug-85:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.schneidermaster.selvecontrol.app-main-87:/mipmap-xxxhdpi/ic_launcher.webp"
+    }
+]

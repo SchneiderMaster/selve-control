@@ -1,0 +1,621 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:2:1-67:12
+INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:2:1-67:12
+MERGED from [com.google.android.horologist:horologist-compose-tools:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\8bc0ac19b33e6ba529d35de38c4e78de\transformed\horologist-compose-tools-0.4.8\AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.android.horologist:horologist-tiles:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\cd38335a92fa857fb93f7b679a4048e3\transformed\horologist-tiles-0.4.8\AndroidManifest.xml:17:1-32:12
+MERGED from [androidx.wear.tiles:tiles-material:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\90f14165f02976dacd293bfd0dc7fb1e\transformed\tiles-material-1.4.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:2:1-19:12
+MERGED from [androidx.wear.tiles:tiles-renderer:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\7d75b64f7e13270b1f2a332fc72d80a8\transformed\tiles-renderer-1.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.protolayout:protolayout-material-core:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\c8a729ba57bcccdbf1a5b889283facb3\transformed\protolayout-material-core-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.watchface:watchface-complications:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\589f26a92fc153111e61b5b1060c078d\transformed\watchface-complications-1.2.0-alpha08\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.watchface:watchface-complications-data-source-ktx:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\66554cfe80fbd6a9ce7788cfb416b8a1\transformed\watchface-complications-data-source-ktx-1.2.0-alpha08\AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\8ce798d5cbc68a506bc9ab8c86822e58\transformed\watchface-complications-data-source-1.2.0-alpha08\AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\74213f229654def30928a7f64b1e847a\transformed\watchface-complications-data-1.2.0-alpha08\AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.wear.protolayout:protolayout-renderer:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\bf2568bd7ec4b5d59c58bac6ddb8c6dd\transformed\protolayout-renderer-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.protolayout:protolayout-expression:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\a1f4d2715f4da5148ebbdb4518911bd5\transformed\protolayout-expression-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.protolayout:protolayout-material:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\36ad9a1991ea4fd2e8013a416f527079\transformed\protolayout-material-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.protolayout:protolayout:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\4d8acdc7e4fcc00c643e9a593142a744\transformed\protolayout-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.protolayout:protolayout-expression-pipeline:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\93b4b973b647f053013c88ddcdde7cf2\transformed\protolayout-expression-pipeline-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-wearable:18.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\986287cb8614bde6dc380f390e9ea314\transformed\play-services-wearable-18.2.0\AndroidManifest.xml:2:1-8:12
+MERGED from [androidx.wear.compose:compose-ui-tooling:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\b3466b808a7a0032513522771bcc9a02\transformed\compose-ui-tooling-1.2.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.compose:compose-navigation:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\204e15b97f72fe51ef6a651919fda60a\transformed\compose-navigation-1.2.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.compose:compose-material-core:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\f2addae869c9cd09b45411e5fa67f264\transformed\compose-material-core-1.2.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.compose:compose-material:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\3cd996170f948ae5b3f2e5fc872fc999\transformed\compose-material-1.2.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.compose:compose-foundation:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\ae68de44114afd46e891636b39bafa34\transformed\compose-foundation-1.2.1\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-base:18.5.0] C:\Users\fynn2\.gradle\caches\transforms-4\1addcbaec7dc522a0bb0866220e2fe43\transformed\play-services-base-18.5.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\ecce327c5575dfef37d970bdea2f11be\transformed\play-services-tasks-18.2.0\AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\d1153b3ce25ae231b70799842e48a256\transformed\play-services-basement-18.4.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.wear:wear:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\e1465f76e2484d48909d60746fb42b62\transformed\wear-1.3.0\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.material:material-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\56b2ff386d1d528beedcf453bd3c190d\transformed\material-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\f6ea15e9a4bc9ea61e280e5cf76d280e\transformed\material-icons-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\8dc75f7ebfc23c1eae5a8fee7a42e303\transformed\material-ripple-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\bc22be9256e5be524c7de1a5cb716ef8\transformed\navigation-common-ktx-2.6.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\9cf7ac88c94992a954b8ec85845e14e2\transformed\navigation-runtime-ktx-2.6.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\51c19b0df360dae777205416949a8dca\transformed\navigation-runtime-2.6.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\3a5942698d8e352b83af96b2118430a5\transformed\navigation-common-2.6.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-compose:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\78c63585cff9196efbad1e49c2cb7010\transformed\navigation-compose-2.6.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.animation:animation-core-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\0c0fd3923d7c6ace242b2f302edb925f\transformed\animation-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\a19a4d94b13ac156d3ed8795efe03a85\transformed\animation-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\dd203a046f766ee65377b95e5ee5694f\transformed\foundation-layout-release\AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-compose:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\82557cdf92e910e635a39293381ab860\transformed\coil-compose-2.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-compose-base:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8ec7197f1c85070cccc01dea2508292\transformed\coil-compose-base-2.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\7c1c57fd4d2a57e213cc09b5903332b7\transformed\foundation-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\2352fee876e181b605d380e9484a17ea\transformed\ui-tooling-data-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\c4c5a192c04acd8004f8f76d55f6d528\transformed\ui-unit-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\c48316e8516712371e7bf9e84efd5b87\transformed\ui-graphics-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\6c1ec2fc17faf51f45276988dabe22ea\transformed\ui-geometry-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\3911acf51d64938ee8aa4b3b0e763bd6\transformed\ui-util-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\819f5606e5e68a24aa0ce13a8923540c\transformed\ui-text-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\097aaa64fc5311e5318a45a19a574551\transformed\ui-tooling-preview-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\61b527e9c825ab8b8af14a449d02ec4c\transformed\ui-tooling-release\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\71a0cb882eaf337a948567f0849aba86\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.preference:preference:1.1.0] C:\Users\fynn2\.gradle\caches\transforms-4\e050c89177fa8b76549c1a6c9d5f0f5d\transformed\preference-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [io.coil-kt:coil:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f11bea28842c4def35750f26095ea3b8\transformed\coil-2.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-base:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\a40555e15b5209a17efd2f37c379dfd0\transformed\coil-base-2.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\fynn2\.gradle\caches\transforms-4\cf0e4fa840d62de6c9d25830a4833c10\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\fynn2\.gradle\caches\transforms-4\e6ae86323b69017173f61c9dcd0a159d\transformed\appcompat-1.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\fynn2\.gradle\caches\transforms-4\037242f138671bdfae2d508c541988e2\transformed\fragment-1.3.6\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.7.2] C:\Users\fynn2\.gradle\caches\transforms-4\8e5c4c906e7065edc13b2d0a3f550a78\transformed\activity-1.7.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-ktx:1.7.2] C:\Users\fynn2\.gradle\caches\transforms-4\262cba385278096a2e33463266a8d3ac\transformed\activity-ktx-1.7.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-compose:1.7.2] C:\Users\fynn2\.gradle\caches\transforms-4\e88254f31dfe4c329dedb726cf986cc4\transformed\activity-compose-1.7.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.30.1] C:\Users\fynn2\.gradle\caches\transforms-4\a53a395761e036fa9d5c3c90ef44371e\transformed\accompanist-drawablepainter-0.30.1\AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\04b235f0705e06a4b73000f007816474\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\176c4880e28c23259a4c9f33a53875d9\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\c519bd055582e962a996a90e84027b0a\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\b3335daef40cfa6c8e3ed737e4170fe1\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\c5bf970e5ab154f8829fdec983f06db9\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\43a91e25084ed8f7d4fe709a4abd5bba\transformed\lifecycle-viewmodel-ktx-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\75838de2f494f5bad1ce27119d37b1cd\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\c0db9c0a4316e1f237947dcb89742f3e\transformed\lifecycle-service-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\747cd5b31b356c6e975205d0890f190b\transformed\lifecycle-runtime-ktx-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1cba1a592b0acf5f861d691dad005b09\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\e89a02df317f833dac6729b4abd54bc2\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\0bc608265e677a478931f158ff25d820\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\12ebf7590a0fb9bc2cf9179e4b86dd21\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\484ea8fce2bcae6c7bc5b8aaca09c12b\transformed\savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\e1255d6cc3d0001cf81a59bbeac86c9c\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1e65b12d8abbfbf8e4a1dfbbba5ff8ca\transformed\lifecycle-viewmodel-compose-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\6b9157de6093b2363dbee22092985867\transformed\ui-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\fynn2\.gradle\caches\transforms-4\ea0d26de623403e77c11ffba40790f7f\transformed\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\bb7ee22a094d83ede010cbcce7806551\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-seekable:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\4167006e7731a48ed07342eff84b2d3f\transformed\vectordrawable-seekable-1.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-animation:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\ad63aeb1e474475415c2356f8ad966ef\transformed\core-animation-1.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\fynn2\.gradle\caches\transforms-4\ad4a1fd6f69f9052d1988aa8479e974e\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\786efc4de2f631e2afcd1640ab736116\transformed\vectordrawable-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\33d2d5f04d3578fdc9f0fd2bc509be51\transformed\autofill-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\82b70d2f9029b9c7182f8238bf25e29a\transformed\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\d3b32b1b0c280a305f31d36ca98b1d2e\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\1d434235722386d53cd3e4f35b45a3f1\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\5bba2e06a22121343319a97a0f621add\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\67673ce1bfdee150825b10eadbae114f\transformed\core-ktx-1.13.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\acc628dd171c1fb6618d1a43ef851cb3\transformed\runtime-saveable-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\9464743d940c0585bea09aed0a6e1db1\transformed\runtime-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\fynn2\.gradle\caches\transforms-4\09f746f2f3e0b0016699a3b81a3bfd74\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\fynn2\.gradle\caches\transforms-4\dfefee4316d34d1ae31a21158398d25a\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\5bff78bff384700d4f5268751f022d52\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\35b566c29385cbc97c7cc1e9fe6d5613\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\9bec489040f99e262c2fcbea72bfda92\transformed\tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\a02301512fde24eb43626eaf7e143062\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\fynn2\.gradle\caches\transforms-4\235a841d470707024f24f0f6fbc540dd\transformed\exifinterface-1.3.6\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\3532f0fc1ebe0197cb3559af3d994a61\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\1aec2eb2c54efc7a54efe3da9b59707e\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\211979da185c7cecc7ef98f683f2acf3\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\7c15299cdf7f7c2aa63f911fc2417b6d\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\e68255155b58f146fbde475e9c9349a8\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:2:11-69
+uses-feature#android.hardware.type.watch
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:4:5-64
+MERGED from [com.google.android.horologist:horologist-compose-tools:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\8bc0ac19b33e6ba529d35de38c4e78de\transformed\horologist-compose-tools-0.4.8\AndroidManifest.xml:25:5-64
+MERGED from [com.google.android.horologist:horologist-compose-tools:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\8bc0ac19b33e6ba529d35de38c4e78de\transformed\horologist-compose-tools-0.4.8\AndroidManifest.xml:25:5-64
+MERGED from [com.google.android.horologist:horologist-tiles:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\cd38335a92fa857fb93f7b679a4048e3\transformed\horologist-tiles-0.4.8\AndroidManifest.xml:30:5-64
+MERGED from [com.google.android.horologist:horologist-tiles:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\cd38335a92fa857fb93f7b679a4048e3\transformed\horologist-tiles-0.4.8\AndroidManifest.xml:30:5-64
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:4:19-61
+uses-permission#android.permission.WAKE_LOCK
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:6:5-68
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:6:22-65
+application
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:8:5-65:19
+INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:8:5-65:19
+MERGED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:13:5-17:19
+MERGED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:13:5-17:19
+MERGED from [androidx.wear.watchface:watchface-complications-data-source-ktx:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\66554cfe80fbd6a9ce7788cfb416b8a1\transformed\watchface-complications-data-source-ktx-1.2.0-alpha08\AndroidManifest.xml:7:5-11:19
+MERGED from [androidx.wear.watchface:watchface-complications-data-source-ktx:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\66554cfe80fbd6a9ce7788cfb416b8a1\transformed\watchface-complications-data-source-ktx-1.2.0-alpha08\AndroidManifest.xml:7:5-11:19
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\8ce798d5cbc68a506bc9ab8c86822e58\transformed\watchface-complications-data-source-1.2.0-alpha08\AndroidManifest.xml:7:5-11:19
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\8ce798d5cbc68a506bc9ab8c86822e58\transformed\watchface-complications-data-source-1.2.0-alpha08\AndroidManifest.xml:7:5-11:19
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\74213f229654def30928a7f64b1e847a\transformed\watchface-complications-data-1.2.0-alpha08\AndroidManifest.xml:7:5-11:19
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\74213f229654def30928a7f64b1e847a\transformed\watchface-complications-data-1.2.0-alpha08\AndroidManifest.xml:7:5-11:19
+MERGED from [com.google.android.gms:play-services-wearable:18.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\986287cb8614bde6dc380f390e9ea314\transformed\play-services-wearable-18.2.0\AndroidManifest.xml:6:5-20
+MERGED from [com.google.android.gms:play-services-wearable:18.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\986287cb8614bde6dc380f390e9ea314\transformed\play-services-wearable-18.2.0\AndroidManifest.xml:6:5-20
+MERGED from [com.google.android.gms:play-services-base:18.5.0] C:\Users\fynn2\.gradle\caches\transforms-4\1addcbaec7dc522a0bb0866220e2fe43\transformed\play-services-base-18.5.0\AndroidManifest.xml:4:5-6:19
+MERGED from [com.google.android.gms:play-services-base:18.5.0] C:\Users\fynn2\.gradle\caches\transforms-4\1addcbaec7dc522a0bb0866220e2fe43\transformed\play-services-base-18.5.0\AndroidManifest.xml:4:5-6:19
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\ecce327c5575dfef37d970bdea2f11be\transformed\play-services-tasks-18.2.0\AndroidManifest.xml:4:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\ecce327c5575dfef37d970bdea2f11be\transformed\play-services-tasks-18.2.0\AndroidManifest.xml:4:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\d1153b3ce25ae231b70799842e48a256\transformed\play-services-basement-18.4.0\AndroidManifest.xml:5:5-7:19
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\d1153b3ce25ae231b70799842e48a256\transformed\play-services-basement-18.4.0\AndroidManifest.xml:5:5-7:19
+MERGED from [androidx.wear:wear:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\e1465f76e2484d48909d60746fb42b62\transformed\wear-1.3.0\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.wear:wear:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\e1465f76e2484d48909d60746fb42b62\transformed\wear-1.3.0\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\61b527e9c825ab8b8af14a449d02ec4c\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\61b527e9c825ab8b8af14a449d02ec4c\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\71a0cb882eaf337a948567f0849aba86\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\71a0cb882eaf337a948567f0849aba86\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1cba1a592b0acf5f861d691dad005b09\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1cba1a592b0acf5f861d691dad005b09\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\5bff78bff384700d4f5268751f022d52\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\5bff78bff384700d4f5268751f022d52\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\35b566c29385cbc97c7cc1e9fe6d5613\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\35b566c29385cbc97c7cc1e9fe6d5613\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:12:9-35
+	android:label
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:11:9-41
+	android:icon
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:10:9-43
+	android:allowBackup
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:9:9-35
+	android:theme
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:13:9-59
+service#com.schneidermaster.selvecontrol.complication.MainComplicationService
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:14:9-29:19
+	android:label
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:17:13-55
+	android:exported
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:16:13-36
+	android:permission
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:18:13-99
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:15:13-65
+intent-filter#action:name:android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:19:13-21:29
+action#android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:20:17-116
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:20:25-113
+meta-data#android.support.wearable.complications.SUPPORTED_TYPES
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:23:13-25:46
+	android:value
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:25:17-43
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:24:17-86
+meta-data#android.support.wearable.complications.UPDATE_PERIOD_SECONDS
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:26:13-28:37
+	android:value
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:28:17-34
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:27:17-92
+service#com.schneidermaster.selvecontrol.tile.MainTileService
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:30:9-41:19
+	android:label
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:32:13-47
+	android:exported
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:33:13-36
+	android:permission
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:34:13-91
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:31:13-49
+intent-filter#action:name:androidx.wear.tiles.action.BIND_TILE_PROVIDER
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:35:13-37:29
+action#androidx.wear.tiles.action.BIND_TILE_PROVIDER
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:36:17-88
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:36:25-85
+meta-data#androidx.wear.tiles.PREVIEW
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:39:13-40:61
+	android:resource
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:40:17-58
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:39:24-66
+uses-library#com.google.android.wearable
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:43:9-45:39
+MERGED from [androidx.wear.watchface:watchface-complications-data-source-ktx:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\66554cfe80fbd6a9ce7788cfb416b8a1\transformed\watchface-complications-data-source-ktx-1.2.0-alpha08\AndroidManifest.xml:8:9-10:40
+MERGED from [androidx.wear.watchface:watchface-complications-data-source-ktx:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\66554cfe80fbd6a9ce7788cfb416b8a1\transformed\watchface-complications-data-source-ktx-1.2.0-alpha08\AndroidManifest.xml:8:9-10:40
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\8ce798d5cbc68a506bc9ab8c86822e58\transformed\watchface-complications-data-source-1.2.0-alpha08\AndroidManifest.xml:8:9-10:40
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\8ce798d5cbc68a506bc9ab8c86822e58\transformed\watchface-complications-data-source-1.2.0-alpha08\AndroidManifest.xml:8:9-10:40
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\74213f229654def30928a7f64b1e847a\transformed\watchface-complications-data-1.2.0-alpha08\AndroidManifest.xml:8:9-10:40
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\74213f229654def30928a7f64b1e847a\transformed\watchface-complications-data-1.2.0-alpha08\AndroidManifest.xml:8:9-10:40
+MERGED from [androidx.wear:wear:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\e1465f76e2484d48909d60746fb42b62\transformed\wear-1.3.0\AndroidManifest.xml:23:9-25:40
+MERGED from [androidx.wear:wear:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\e1465f76e2484d48909d60746fb42b62\transformed\wear-1.3.0\AndroidManifest.xml:23:9-25:40
+	android:required
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:45:13-36
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:44:13-55
+meta-data#com.google.android.wearable.standalone
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:50:9-52:36
+	android:value
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:52:13-33
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:51:13-66
+activity#com.schneidermaster.selvecontrol.presentation.MainActivity
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:54:9-64:20
+	android:exported
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:56:13-36
+	android:theme
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:58:13-62
+	android:taskAffinity
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:57:13-36
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:55:13-54
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:59:13-63:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:60:17-69
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:60:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:62:17-77
+	android:name
+		ADDED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml:62:27-74
+uses-sdk
+INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml
+MERGED from [com.google.android.horologist:horologist-compose-tools:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\8bc0ac19b33e6ba529d35de38c4e78de\transformed\horologist-compose-tools-0.4.8\AndroidManifest.xml:21:5-23:42
+MERGED from [com.google.android.horologist:horologist-compose-tools:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\8bc0ac19b33e6ba529d35de38c4e78de\transformed\horologist-compose-tools-0.4.8\AndroidManifest.xml:21:5-23:42
+MERGED from [com.google.android.horologist:horologist-tiles:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\cd38335a92fa857fb93f7b679a4048e3\transformed\horologist-tiles-0.4.8\AndroidManifest.xml:25:5-28:419
+MERGED from [com.google.android.horologist:horologist-tiles:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\cd38335a92fa857fb93f7b679a4048e3\transformed\horologist-tiles-0.4.8\AndroidManifest.xml:25:5-28:419
+MERGED from [androidx.wear.tiles:tiles-material:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\90f14165f02976dacd293bfd0dc7fb1e\transformed\tiles-material-1.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.wear.tiles:tiles-material:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\90f14165f02976dacd293bfd0dc7fb1e\transformed\tiles-material-1.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.tiles:tiles-renderer:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\7d75b64f7e13270b1f2a332fc72d80a8\transformed\tiles-renderer-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.tiles:tiles-renderer:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\7d75b64f7e13270b1f2a332fc72d80a8\transformed\tiles-renderer-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-material-core:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\c8a729ba57bcccdbf1a5b889283facb3\transformed\protolayout-material-core-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-material-core:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\c8a729ba57bcccdbf1a5b889283facb3\transformed\protolayout-material-core-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\589f26a92fc153111e61b5b1060c078d\transformed\watchface-complications-1.2.0-alpha08\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\589f26a92fc153111e61b5b1060c078d\transformed\watchface-complications-1.2.0-alpha08\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications-data-source-ktx:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\66554cfe80fbd6a9ce7788cfb416b8a1\transformed\watchface-complications-data-source-ktx-1.2.0-alpha08\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications-data-source-ktx:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\66554cfe80fbd6a9ce7788cfb416b8a1\transformed\watchface-complications-data-source-ktx-1.2.0-alpha08\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\8ce798d5cbc68a506bc9ab8c86822e58\transformed\watchface-complications-data-source-1.2.0-alpha08\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\8ce798d5cbc68a506bc9ab8c86822e58\transformed\watchface-complications-data-source-1.2.0-alpha08\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\74213f229654def30928a7f64b1e847a\transformed\watchface-complications-data-1.2.0-alpha08\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.0-alpha08] C:\Users\fynn2\.gradle\caches\transforms-4\74213f229654def30928a7f64b1e847a\transformed\watchface-complications-data-1.2.0-alpha08\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-renderer:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\bf2568bd7ec4b5d59c58bac6ddb8c6dd\transformed\protolayout-renderer-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-renderer:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\bf2568bd7ec4b5d59c58bac6ddb8c6dd\transformed\protolayout-renderer-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-expression:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\a1f4d2715f4da5148ebbdb4518911bd5\transformed\protolayout-expression-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-expression:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\a1f4d2715f4da5148ebbdb4518911bd5\transformed\protolayout-expression-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-material:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\36ad9a1991ea4fd2e8013a416f527079\transformed\protolayout-material-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-material:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\36ad9a1991ea4fd2e8013a416f527079\transformed\protolayout-material-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\4d8acdc7e4fcc00c643e9a593142a744\transformed\protolayout-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\4d8acdc7e4fcc00c643e9a593142a744\transformed\protolayout-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-expression-pipeline:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\93b4b973b647f053013c88ddcdde7cf2\transformed\protolayout-expression-pipeline-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-expression-pipeline:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\93b4b973b647f053013c88ddcdde7cf2\transformed\protolayout-expression-pipeline-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-wearable:18.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\986287cb8614bde6dc380f390e9ea314\transformed\play-services-wearable-18.2.0\AndroidManifest.xml:4:5-44
+MERGED from [com.google.android.gms:play-services-wearable:18.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\986287cb8614bde6dc380f390e9ea314\transformed\play-services-wearable-18.2.0\AndroidManifest.xml:4:5-44
+MERGED from [androidx.wear.compose:compose-ui-tooling:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\b3466b808a7a0032513522771bcc9a02\transformed\compose-ui-tooling-1.2.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.compose:compose-ui-tooling:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\b3466b808a7a0032513522771bcc9a02\transformed\compose-ui-tooling-1.2.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.compose:compose-navigation:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\204e15b97f72fe51ef6a651919fda60a\transformed\compose-navigation-1.2.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.compose:compose-navigation:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\204e15b97f72fe51ef6a651919fda60a\transformed\compose-navigation-1.2.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.compose:compose-material-core:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\f2addae869c9cd09b45411e5fa67f264\transformed\compose-material-core-1.2.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.compose:compose-material-core:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\f2addae869c9cd09b45411e5fa67f264\transformed\compose-material-core-1.2.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.compose:compose-material:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\3cd996170f948ae5b3f2e5fc872fc999\transformed\compose-material-1.2.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.compose:compose-material:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\3cd996170f948ae5b3f2e5fc872fc999\transformed\compose-material-1.2.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.compose:compose-foundation:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\ae68de44114afd46e891636b39bafa34\transformed\compose-foundation-1.2.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.compose:compose-foundation:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\ae68de44114afd46e891636b39bafa34\transformed\compose-foundation-1.2.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:18.5.0] C:\Users\fynn2\.gradle\caches\transforms-4\1addcbaec7dc522a0bb0866220e2fe43\transformed\play-services-base-18.5.0\AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-base:18.5.0] C:\Users\fynn2\.gradle\caches\transforms-4\1addcbaec7dc522a0bb0866220e2fe43\transformed\play-services-base-18.5.0\AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\ecce327c5575dfef37d970bdea2f11be\transformed\play-services-tasks-18.2.0\AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-tasks:18.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\ecce327c5575dfef37d970bdea2f11be\transformed\play-services-tasks-18.2.0\AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\d1153b3ce25ae231b70799842e48a256\transformed\play-services-basement-18.4.0\AndroidManifest.xml:3:5-44
+MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\d1153b3ce25ae231b70799842e48a256\transformed\play-services-basement-18.4.0\AndroidManifest.xml:3:5-44
+MERGED from [androidx.wear:wear:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\e1465f76e2484d48909d60746fb42b62\transformed\wear-1.3.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.wear:wear:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\e1465f76e2484d48909d60746fb42b62\transformed\wear-1.3.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material:material-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\56b2ff386d1d528beedcf453bd3c190d\transformed\material-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\56b2ff386d1d528beedcf453bd3c190d\transformed\material-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\f6ea15e9a4bc9ea61e280e5cf76d280e\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\f6ea15e9a4bc9ea61e280e5cf76d280e\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\8dc75f7ebfc23c1eae5a8fee7a42e303\transformed\material-ripple-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\8dc75f7ebfc23c1eae5a8fee7a42e303\transformed\material-ripple-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\bc22be9256e5be524c7de1a5cb716ef8\transformed\navigation-common-ktx-2.6.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\bc22be9256e5be524c7de1a5cb716ef8\transformed\navigation-common-ktx-2.6.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\9cf7ac88c94992a954b8ec85845e14e2\transformed\navigation-runtime-ktx-2.6.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\9cf7ac88c94992a954b8ec85845e14e2\transformed\navigation-runtime-ktx-2.6.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\51c19b0df360dae777205416949a8dca\transformed\navigation-runtime-2.6.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\51c19b0df360dae777205416949a8dca\transformed\navigation-runtime-2.6.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\3a5942698d8e352b83af96b2118430a5\transformed\navigation-common-2.6.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\3a5942698d8e352b83af96b2118430a5\transformed\navigation-common-2.6.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-compose:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\78c63585cff9196efbad1e49c2cb7010\transformed\navigation-compose-2.6.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-compose:2.6.0] C:\Users\fynn2\.gradle\caches\transforms-4\78c63585cff9196efbad1e49c2cb7010\transformed\navigation-compose-2.6.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\0c0fd3923d7c6ace242b2f302edb925f\transformed\animation-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\0c0fd3923d7c6ace242b2f302edb925f\transformed\animation-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\a19a4d94b13ac156d3ed8795efe03a85\transformed\animation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\a19a4d94b13ac156d3ed8795efe03a85\transformed\animation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\dd203a046f766ee65377b95e5ee5694f\transformed\foundation-layout-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\dd203a046f766ee65377b95e5ee5694f\transformed\foundation-layout-release\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\82557cdf92e910e635a39293381ab860\transformed\coil-compose-2.4.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\82557cdf92e910e635a39293381ab860\transformed\coil-compose-2.4.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8ec7197f1c85070cccc01dea2508292\transformed\coil-compose-base-2.4.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8ec7197f1c85070cccc01dea2508292\transformed\coil-compose-base-2.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\7c1c57fd4d2a57e213cc09b5903332b7\transformed\foundation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\7c1c57fd4d2a57e213cc09b5903332b7\transformed\foundation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\2352fee876e181b605d380e9484a17ea\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\2352fee876e181b605d380e9484a17ea\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\c4c5a192c04acd8004f8f76d55f6d528\transformed\ui-unit-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\c4c5a192c04acd8004f8f76d55f6d528\transformed\ui-unit-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\c48316e8516712371e7bf9e84efd5b87\transformed\ui-graphics-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\c48316e8516712371e7bf9e84efd5b87\transformed\ui-graphics-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\6c1ec2fc17faf51f45276988dabe22ea\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\6c1ec2fc17faf51f45276988dabe22ea\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\3911acf51d64938ee8aa4b3b0e763bd6\transformed\ui-util-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\3911acf51d64938ee8aa4b3b0e763bd6\transformed\ui-util-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\819f5606e5e68a24aa0ce13a8923540c\transformed\ui-text-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\819f5606e5e68a24aa0ce13a8923540c\transformed\ui-text-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\097aaa64fc5311e5318a45a19a574551\transformed\ui-tooling-preview-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\097aaa64fc5311e5318a45a19a574551\transformed\ui-tooling-preview-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\61b527e9c825ab8b8af14a449d02ec4c\transformed\ui-tooling-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\61b527e9c825ab8b8af14a449d02ec4c\transformed\ui-tooling-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\71a0cb882eaf337a948567f0849aba86\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\71a0cb882eaf337a948567f0849aba86\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:20:5-44
+MERGED from [androidx.preference:preference:1.1.0] C:\Users\fynn2\.gradle\caches\transforms-4\e050c89177fa8b76549c1a6c9d5f0f5d\transformed\preference-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference:1.1.0] C:\Users\fynn2\.gradle\caches\transforms-4\e050c89177fa8b76549c1a6c9d5f0f5d\transformed\preference-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [io.coil-kt:coil:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f11bea28842c4def35750f26095ea3b8\transformed\coil-2.4.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f11bea28842c4def35750f26095ea3b8\transformed\coil-2.4.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\a40555e15b5209a17efd2f37c379dfd0\transformed\coil-base-2.4.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\a40555e15b5209a17efd2f37c379dfd0\transformed\coil-base-2.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\fynn2\.gradle\caches\transforms-4\cf0e4fa840d62de6c9d25830a4833c10\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\fynn2\.gradle\caches\transforms-4\cf0e4fa840d62de6c9d25830a4833c10\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\fynn2\.gradle\caches\transforms-4\e6ae86323b69017173f61c9dcd0a159d\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\fynn2\.gradle\caches\transforms-4\e6ae86323b69017173f61c9dcd0a159d\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\fynn2\.gradle\caches\transforms-4\037242f138671bdfae2d508c541988e2\transformed\fragment-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\fynn2\.gradle\caches\transforms-4\037242f138671bdfae2d508c541988e2\transformed\fragment-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.7.2] C:\Users\fynn2\.gradle\caches\transforms-4\8e5c4c906e7065edc13b2d0a3f550a78\transformed\activity-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.7.2] C:\Users\fynn2\.gradle\caches\transforms-4\8e5c4c906e7065edc13b2d0a3f550a78\transformed\activity-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.7.2] C:\Users\fynn2\.gradle\caches\transforms-4\262cba385278096a2e33463266a8d3ac\transformed\activity-ktx-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-ktx:1.7.2] C:\Users\fynn2\.gradle\caches\transforms-4\262cba385278096a2e33463266a8d3ac\transformed\activity-ktx-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.7.2] C:\Users\fynn2\.gradle\caches\transforms-4\e88254f31dfe4c329dedb726cf986cc4\transformed\activity-compose-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.7.2] C:\Users\fynn2\.gradle\caches\transforms-4\e88254f31dfe4c329dedb726cf986cc4\transformed\activity-compose-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.30.1] C:\Users\fynn2\.gradle\caches\transforms-4\a53a395761e036fa9d5c3c90ef44371e\transformed\accompanist-drawablepainter-0.30.1\AndroidManifest.xml:21:5-23:42
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.30.1] C:\Users\fynn2\.gradle\caches\transforms-4\a53a395761e036fa9d5c3c90ef44371e\transformed\accompanist-drawablepainter-0.30.1\AndroidManifest.xml:21:5-23:42
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\04b235f0705e06a4b73000f007816474\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\04b235f0705e06a4b73000f007816474\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\176c4880e28c23259a4c9f33a53875d9\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\176c4880e28c23259a4c9f33a53875d9\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\c519bd055582e962a996a90e84027b0a\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\c519bd055582e962a996a90e84027b0a\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\b3335daef40cfa6c8e3ed737e4170fe1\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\b3335daef40cfa6c8e3ed737e4170fe1\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\c5bf970e5ab154f8829fdec983f06db9\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\c5bf970e5ab154f8829fdec983f06db9\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\43a91e25084ed8f7d4fe709a4abd5bba\transformed\lifecycle-viewmodel-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\43a91e25084ed8f7d4fe709a4abd5bba\transformed\lifecycle-viewmodel-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\75838de2f494f5bad1ce27119d37b1cd\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\75838de2f494f5bad1ce27119d37b1cd\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\c0db9c0a4316e1f237947dcb89742f3e\transformed\lifecycle-service-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\c0db9c0a4316e1f237947dcb89742f3e\transformed\lifecycle-service-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\747cd5b31b356c6e975205d0890f190b\transformed\lifecycle-runtime-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\747cd5b31b356c6e975205d0890f190b\transformed\lifecycle-runtime-ktx-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1cba1a592b0acf5f861d691dad005b09\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1cba1a592b0acf5f861d691dad005b09\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\e89a02df317f833dac6729b4abd54bc2\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\e89a02df317f833dac6729b4abd54bc2\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\0bc608265e677a478931f158ff25d820\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\0bc608265e677a478931f158ff25d820\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\12ebf7590a0fb9bc2cf9179e4b86dd21\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\12ebf7590a0fb9bc2cf9179e4b86dd21\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\484ea8fce2bcae6c7bc5b8aaca09c12b\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\fynn2\.gradle\caches\transforms-4\484ea8fce2bcae6c7bc5b8aaca09c12b\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\e1255d6cc3d0001cf81a59bbeac86c9c\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\e1255d6cc3d0001cf81a59bbeac86c9c\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1e65b12d8abbfbf8e4a1dfbbba5ff8ca\transformed\lifecycle-viewmodel-compose-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1e65b12d8abbfbf8e4a1dfbbba5ff8ca\transformed\lifecycle-viewmodel-compose-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\6b9157de6093b2363dbee22092985867\transformed\ui-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\6b9157de6093b2363dbee22092985867\transformed\ui-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\fynn2\.gradle\caches\transforms-4\ea0d26de623403e77c11ffba40790f7f\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\fynn2\.gradle\caches\transforms-4\ea0d26de623403e77c11ffba40790f7f\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\bb7ee22a094d83ede010cbcce7806551\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\bb7ee22a094d83ede010cbcce7806551\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-seekable:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\4167006e7731a48ed07342eff84b2d3f\transformed\vectordrawable-seekable-1.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-seekable:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\4167006e7731a48ed07342eff84b2d3f\transformed\vectordrawable-seekable-1.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-animation:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\ad63aeb1e474475415c2356f8ad966ef\transformed\core-animation-1.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-animation:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\ad63aeb1e474475415c2356f8ad966ef\transformed\core-animation-1.0.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\fynn2\.gradle\caches\transforms-4\ad4a1fd6f69f9052d1988aa8479e974e\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\fynn2\.gradle\caches\transforms-4\ad4a1fd6f69f9052d1988aa8479e974e\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\786efc4de2f631e2afcd1640ab736116\transformed\vectordrawable-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\786efc4de2f631e2afcd1640ab736116\transformed\vectordrawable-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\33d2d5f04d3578fdc9f0fd2bc509be51\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\33d2d5f04d3578fdc9f0fd2bc509be51\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\82b70d2f9029b9c7182f8238bf25e29a\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\82b70d2f9029b9c7182f8238bf25e29a\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\d3b32b1b0c280a305f31d36ca98b1d2e\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\d3b32b1b0c280a305f31d36ca98b1d2e\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\1d434235722386d53cd3e4f35b45a3f1\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\1d434235722386d53cd3e4f35b45a3f1\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\5bba2e06a22121343319a97a0f621add\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\5bba2e06a22121343319a97a0f621add\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\67673ce1bfdee150825b10eadbae114f\transformed\core-ktx-1.13.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\67673ce1bfdee150825b10eadbae114f\transformed\core-ktx-1.13.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\acc628dd171c1fb6618d1a43ef851cb3\transformed\runtime-saveable-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\acc628dd171c1fb6618d1a43ef851cb3\transformed\runtime-saveable-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\9464743d940c0585bea09aed0a6e1db1\transformed\runtime-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\9464743d940c0585bea09aed0a6e1db1\transformed\runtime-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\fynn2\.gradle\caches\transforms-4\09f746f2f3e0b0016699a3b81a3bfd74\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-splashscreen:1.0.1] C:\Users\fynn2\.gradle\caches\transforms-4\09f746f2f3e0b0016699a3b81a3bfd74\transformed\core-splashscreen-1.0.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\fynn2\.gradle\caches\transforms-4\dfefee4316d34d1ae31a21158398d25a\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\fynn2\.gradle\caches\transforms-4\dfefee4316d34d1ae31a21158398d25a\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\5bff78bff384700d4f5268751f022d52\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\5bff78bff384700d4f5268751f022d52\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\35b566c29385cbc97c7cc1e9fe6d5613\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\35b566c29385cbc97c7cc1e9fe6d5613\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\9bec489040f99e262c2fcbea72bfda92\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\9bec489040f99e262c2fcbea72bfda92\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\a02301512fde24eb43626eaf7e143062\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\a02301512fde24eb43626eaf7e143062\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\fynn2\.gradle\caches\transforms-4\235a841d470707024f24f0f6fbc540dd\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\fynn2\.gradle\caches\transforms-4\235a841d470707024f24f0f6fbc540dd\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\3532f0fc1ebe0197cb3559af3d994a61\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\3532f0fc1ebe0197cb3559af3d994a61\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\1aec2eb2c54efc7a54efe3da9b59707e\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\1aec2eb2c54efc7a54efe3da9b59707e\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\211979da185c7cecc7ef98f683f2acf3\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\211979da185c7cecc7ef98f683f2acf3\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\7c15299cdf7f7c2aa63f911fc2417b6d\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\fynn2\.gradle\caches\transforms-4\7c15299cdf7f7c2aa63f911fc2417b6d\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\e68255155b58f146fbde475e9c9349a8\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\fynn2\.gradle\caches\transforms-4\e68255155b58f146fbde475e9c9349a8\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+	tools:overrideLibrary
+		ADDED from [com.google.android.horologist:horologist-tiles:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\cd38335a92fa857fb93f7b679a4048e3\transformed\horologist-tiles-0.4.8\AndroidManifest.xml:28:9-416
+	android:targetSdkVersion
+		INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml
+	tools:ignore
+		ADDED from [com.google.android.horologist:horologist-compose-tools:0.4.8] C:\Users\fynn2\.gradle\caches\transforms-4\8bc0ac19b33e6ba529d35de38c4e78de\transformed\horologist-compose-tools-0.4.8\AndroidManifest.xml:23:9-39
+	android:minSdkVersion
+		INJECTED from C:\Users\fynn2\AndroidStudioProjects\SelveControl\app\src\main\AndroidManifest.xml
+queries
+ADDED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:7:5-11:15
+intent#action:name:androidx.wear.tiles.action.BIND_UPDATE_REQUESTER
+ADDED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:8:9-10:18
+action#androidx.wear.tiles.action.BIND_UPDATE_REQUESTER
+ADDED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:9:13-87
+	android:name
+		ADDED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:9:21-84
+uses-library#wear-sdk
+ADDED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:14:9-16:40
+	android:required
+		ADDED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:16:13-37
+	android:name
+		ADDED from [androidx.wear.tiles:tiles:1.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\f8d2271887c81500303eb7261c84433f\transformed\tiles-1.4.0\AndroidManifest.xml:15:13-36
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.5.0] C:\Users\fynn2\.gradle\caches\transforms-4\1addcbaec7dc522a0bb0866220e2fe43\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.5.0] C:\Users\fynn2\.gradle\caches\transforms-4\1addcbaec7dc522a0bb0866220e2fe43\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.5.0] C:\Users\fynn2\.gradle\caches\transforms-4\1addcbaec7dc522a0bb0866220e2fe43\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.5.0] C:\Users\fynn2\.gradle\caches\transforms-4\1addcbaec7dc522a0bb0866220e2fe43\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\d1153b3ce25ae231b70799842e48a256\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\d1153b3ce25ae231b70799842e48a256\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\fynn2\.gradle\caches\transforms-4\d1153b3ce25ae231b70799842e48a256\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\61b527e9c825ab8b8af14a449d02ec4c\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\61b527e9c825ab8b8af14a449d02ec4c\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\61b527e9c825ab8b8af14a449d02ec4c\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+activity#androidx.activity.ComponentActivity
+ADDED from [androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\71a0cb882eaf337a948567f0849aba86\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\71a0cb882eaf337a948567f0849aba86\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\fynn2\.gradle\caches\transforms-4\71a0cb882eaf337a948567f0849aba86\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:24:13-63
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1cba1a592b0acf5f861d691dad005b09\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1cba1a592b0acf5f861d691dad005b09\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\35b566c29385cbc97c7cc1e9fe6d5613\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\fynn2\.gradle\caches\transforms-4\35b566c29385cbc97c7cc1e9fe6d5613\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\fynn2\.gradle\caches\transforms-4\0480bfb9008f783e9f9884ef3a600fcc\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1cba1a592b0acf5f861d691dad005b09\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1cba1a592b0acf5f861d691dad005b09\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\fynn2\.gradle\caches\transforms-4\1cba1a592b0acf5f861d691dad005b09\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+permission#com.schneidermaster.selvecontrol.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+uses-permission#com.schneidermaster.selvecontrol.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\fynn2\.gradle\caches\transforms-4\170d72c5db65c129e4d19ebf6827e201\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\fynn2\.gradle\caches\transforms-4\bb7899a1e3e4789646fa73bccc2fbf77\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92

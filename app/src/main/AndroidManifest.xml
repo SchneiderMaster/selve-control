@@ -29,14 +29,15 @@
         </service>
         <service
             android:name=".tile.MainTileService"
-            android:label="@string/tile_label"
             android:exported="true"
+            android:label="@string/tile_label"
             android:permission="com.google.android.wearable.permission.BIND_TILE_PROVIDER">
             <intent-filter>
                 <action android:name="androidx.wear.tiles.action.BIND_TILE_PROVIDER" />
             </intent-filter>
 
-            <meta-data android:name="androidx.wear.tiles.PREVIEW"
+            <meta-data
+                android:name="androidx.wear.tiles.PREVIEW"
                 android:resource="@drawable/tile_preview" />
         </service>
 

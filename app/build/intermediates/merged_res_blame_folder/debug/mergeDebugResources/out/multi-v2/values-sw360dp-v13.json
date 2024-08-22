@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.schneidermaster.selvecontrol.app-mergeDebugResources-83:/values-sw360dp-v13/values-sw360dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\fynn2\\.gradle\\caches\\transforms-4\\e050c89177fa8b76549c1a6c9d5f0f5d\\transformed\\preference-1.1.0\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "71",
+                        "endOffsets": "122"
+                    }
+                }
+            ]
+        }
+    ]
+}

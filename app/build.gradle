@@ -60,34 +60,32 @@ dependencies {
     implementation libs.horologist.compose.tools
     implementation libs.horologist.tiles
     implementation libs.watchface.complications.data.source.ktx
-    implementation libs.firebase.crashlytics.buildtools
     androidTestImplementation platform(libs.compose.bom)
     androidTestImplementation libs.ui.test.junit4
     debugImplementation libs.ui.tooling
     debugImplementation libs.ui.test.manifest
 
-
-    // Use to implement support for wear tiles
-    implementation(libs.tiles.v140)
-
-    // Use to utilize standard components and layouts in your tiles
-    implementation(libs.protolayout)
-
-    // Use to utilize components and layouts with Material Design in your tiles
-    implementation(libs.protolayout.material)
-
-    // Use to include dynamic expressions in your tiles
-    implementation(libs.androidx.protolayout.expression)
-
-    // Use to preview wear tiles in your own app
-    debugImplementation(libs.androidx.tiles.renderer)
-
-    // Use to fetch tiles from a tile provider in your tests
-    testImplementation(libs.androidx.tiles.testing)
-
     implementation libs.guava
 
     // To use CallbackToFutureAdapter
-    implementation libs.androidx.concurrent.futures
+    implementation libs.concurrent.futures
+
+    // Use to implement support for wear tiles
+    implementation libs.tiles.v140
+
+    // Use to utilize standard components and layouts in your tiles
+    implementation libs.protolayout
+
+    // Use to utilize components and layouts with Material Design in your tiles
+    implementation libs.protolayout.material
+
+    // Use to include dynamic expressions in your tiles
+    implementation libs.protolayout.expression
+
+    // Use to preview wear tiles in your own app
+    debugImplementation libs.tiles.renderer
+
+    // Use to fetch tiles from a tile provider in your tests
+    testImplementation libs.tiles.testing
 
 }
