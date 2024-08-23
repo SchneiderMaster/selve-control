@@ -9,10 +9,9 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
-import kotlin.concurrent.thread
 
 @OptIn(DelicateCoroutinesApi::class)
-fun post(client: OkHttpClient, url: String, json: String): Deferred<Response> {
+fun push(client: OkHttpClient, url: String, json: String): Deferred<Response> {
 
     return GlobalScope.async {
         val body = json.toRequestBody("application/json".toMediaType())

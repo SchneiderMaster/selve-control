@@ -13,6 +13,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,7 +22,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,22 +33,25 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.changedToUp
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnit
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
-import androidx.wear.compose.material.Typography
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonParser
 import com.schneidermaster.selvecontrol.presentation.theme.SelveControlTheme
-import com.schneidermaster.selvecontrol.tools.httprequests.post
+import com.schneidermaster.selvecontrol.tools.httprequests.get
+import com.schneidermaster.selvecontrol.tools.httprequests.push
 import com.schneidermaster.selvecontrol.tools.shutters.Shutter
 import com.schneidermaster.selvecontrol.tools.shutters.getName
 import com.schneidermaster.selvecontrol.tools.shutters.getShutters
@@ -56,6 +59,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
+import kotlin.concurrent.thread
 
 class MainActivity : ComponentActivity() {
 
@@ -99,6 +103,8 @@ class MainActivity : ComponentActivity() {
         var currentShutter by remember { mutableStateOf<Shutter?>(null) }
         var shutters by remember { mutableStateOf<List<Shutter>?>(null) }
         var shutterIndex by remember { mutableIntStateOf(0) }
+        var tapPosition by remember { mutableIntStateOf(0) }
+        var height by remember { mutableIntStateOf(0) }
 
         LaunchedEffect(Unit) {
             scope.launch {
@@ -221,11 +227,68 @@ class MainActivity : ComponentActivity() {
                             Box(
                                 modifier = Modifier
                                     .height(Dp(120f))
-                                    .width(Dp(50f)),
-                                contentAlignment = Alignment.Center
+                                    .width(Dp(80f))
+                                    .padding(top= Dp(10f), end = Dp(8f), bottom = Dp(5f))
+                                    .onSizeChanged { size ->
+                                        height = size.height
+                                    }
+                                    .pointerInput(Unit){
+                                        while(true){
+                                            awaitPointerEventScope {
+                                                val event = awaitPointerEvent()
+                                                event.changes.forEach{
+                                                    pointerInputChange ->
+                                                    if(pointerInputChange.changedToUp()){
+                                                        val position = pointerInputChange.position
+                                                        tapPosition = position.y.toInt()
+                                                        val targetPosition = (tapPosition.toFloat()/height.toFloat()*100).toInt()
+                                                        GlobalScope.launch {
+                                                            push(client, "http://192.168.188.143/cmd?auth=Auablume", "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + currentShutter?.sid + "\",\"data\":{\"cmd\": \"moveTo\", \"value\": " + targetPosition + "}}").await()
 
+                                                                do {
+                                                                    val response = get(
+                                                                        client,
+                                                                        "http://192.168.188.143/cmd?XC_FNC=GetStates&auth=Auablume"
+                                                                    ).await()
+                                                                    val shutter =
+                                                                        JsonParser.parseString(
+                                                                            response.body?.string()
+                                                                        ).asJsonObject.get(
+                                                                            "XC_SUC"
+                                                                        ).asJsonArray.first {
+                                                                            it.asJsonObject.get(
+                                                                                "type"
+                                                                            ).asString == "CM" && it.asJsonObject.get(
+                                                                                "sid"
+                                                                            ).asString == currentShutter?.sid
+                                                                        }
+                                                                    currentShutter?.position =
+                                                                        shutter.asJsonObject.get("state").asJsonObject.get(
+                                                                            "position"
+                                                                        ).asInt
+                                                                } while (shutter.asJsonObject.get("state").asJsonObject.get(
+                                                                        "run_state"
+                                                                    ).asInt != 0
+                                                                )
+                                                            }
+
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                contentAlignment = Alignment.Center
                             ){
-                                Text(text = "TODO: display position")
+                                Box(
+                                    modifier = Modifier
+                                        .border(Dp(1f), color = Color.Cyan)
+                                        .fillMaxSize(),
+                                    contentAlignment = Alignment.Center
+                                ){
+                                    Text(text = currentShutter!!.position.toString() + "%", textAlign = TextAlign.Center)
+                                }
+
                             }
                             LazyColumn(
                                 modifier = Modifier
@@ -237,7 +300,7 @@ class MainActivity : ComponentActivity() {
                                             println("I have been pressed; " + "up")
 
                                             GlobalScope.launch {
-                                                val response = post(
+                                                val response = push(
                                                     client,
                                                     "http://192.168.188.143/cmd?auth=Auablume",
                                                     "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveUp\"}}"
@@ -260,7 +323,7 @@ class MainActivity : ComponentActivity() {
 
                                             println("I have been pressed; " + "stop")
                                             GlobalScope.launch {
-                                                val response = post(
+                                                val response = push(
                                                     client,
                                                     "http://192.168.188.143/cmd?auth=Auablume",
                                                     "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"stop\"}}"
@@ -282,7 +345,7 @@ class MainActivity : ComponentActivity() {
                                         onClick = {
                                             println("I have been pressed; " + "down")
                                             GlobalScope.launch {
-                                                val response = post(
+                                                val response = push(
                                                     client,
                                                     "http://192.168.188.143/cmd?auth=Auablume",
                                                     "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveDown\"}}"
