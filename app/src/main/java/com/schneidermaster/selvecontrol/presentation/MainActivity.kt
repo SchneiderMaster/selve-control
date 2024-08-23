@@ -48,16 +48,19 @@ import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import com.google.gson.GsonBuilder
-import com.google.gson.JsonParser
 import com.schneidermaster.selvecontrol.presentation.theme.SelveControlTheme
-import com.schneidermaster.selvecontrol.tools.httprequests.get
 import com.schneidermaster.selvecontrol.tools.httprequests.push
 import com.schneidermaster.selvecontrol.tools.shutters.Shutter
 import com.schneidermaster.selvecontrol.tools.shutters.getName
 import com.schneidermaster.selvecontrol.tools.shutters.getShutters
+import com.schneidermaster.selvecontrol.tools.shutters.updatePositionOfShutter
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import kotlin.concurrent.thread
 
@@ -99,16 +102,18 @@ class MainActivity : ComponentActivity() {
 
         val scope = rememberCoroutineScope()
 
+        var job: Job? = null
+
         var isLoading by remember { mutableStateOf(true) }
         var currentShutter by remember { mutableStateOf<Shutter?>(null) }
-        var shutters by remember { mutableStateOf<List<Shutter>?>(null) }
+        var shutters by remember { mutableStateOf<MutableList<Shutter>?>(null) }
         var shutterIndex by remember { mutableIntStateOf(0) }
         var tapPosition by remember { mutableIntStateOf(0) }
         var height by remember { mutableIntStateOf(0) }
 
         LaunchedEffect(Unit) {
             scope.launch {
-                shutters = getShutters(client, this@MainActivity).await()
+                shutters = getShutters(client, this@MainActivity).await().toMutableList()
                 val firstShutter = shutters!![0]
                 if(firstShutter.name == null) {
                     firstShutter.name = getName(client, firstShutter).await()
@@ -168,11 +173,25 @@ class MainActivity : ComponentActivity() {
                                         }
                                     }
                                     else {
-                                        currentShutter = previousShutter
+                                        job?.cancel()
+                                        currentShutter=previousShutter
+                                        job = scope.launch {
+                                            withContext(Dispatchers.IO) {
+                                                updatePositionOfShutter(
+                                                    client,
+                                                    previousShutter
+                                                ) { updatedShutter ->
+                                                    scope.launch {
+                                                        withContext(Dispatchers.Main) {
+                                                            currentShutter = updatedShutter
+                                                            updateShutters(shutters!!)
+                                                            shutters!![shutterIndex] = currentShutter!!
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
-
-
-
                                 },
                                 modifier = Modifier
                                     .size(Dp(23f))
@@ -211,7 +230,25 @@ class MainActivity : ComponentActivity() {
                                         }
                                     }
                                     else {
+                                        job?.cancel()
                                         currentShutter = nextShutter
+                                        job = scope.launch {
+                                            withContext(Dispatchers.IO) {
+                                                updatePositionOfShutter(
+                                                    client,
+                                                    nextShutter
+                                                ) { updatedShutter ->
+                                                    scope.launch {
+                                                        withContext(Dispatchers.Main) {
+                                                            currentShutter = updatedShutter
+                                                            updateShutters(shutters!!)
+                                                            shutters!![shutterIndex] =
+                                                                currentShutter!!
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 },
                                 modifier = Modifier
@@ -243,36 +280,16 @@ class MainActivity : ComponentActivity() {
                                                         tapPosition = position.y.toInt()
                                                         val targetPosition = (tapPosition.toFloat()/height.toFloat()*100).toInt()
                                                         GlobalScope.launch {
-                                                            push(client, "http://192.168.188.143/cmd?auth=Auablume", "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + currentShutter?.sid + "\",\"data\":{\"cmd\": \"moveTo\", \"value\": " + targetPosition + "}}").await()
+                                                            push(
+                                                                client,
+                                                                "http://192.168.188.143/cmd?auth=Auablume",
+                                                                "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + currentShutter?.sid + "\",\"data\":{\"cmd\": \"moveTo\", \"value\": " + targetPosition + "}}"
+                                                            ).await()
 
-                                                                do {
-                                                                    val response = get(
-                                                                        client,
-                                                                        "http://192.168.188.143/cmd?XC_FNC=GetStates&auth=Auablume"
-                                                                    ).await()
-                                                                    val shutter =
-                                                                        JsonParser.parseString(
-                                                                            response.body?.string()
-                                                                        ).asJsonObject.get(
-                                                                            "XC_SUC"
-                                                                        ).asJsonArray.first {
-                                                                            it.asJsonObject.get(
-                                                                                "type"
-                                                                            ).asString == "CM" && it.asJsonObject.get(
-                                                                                "sid"
-                                                                            ).asString == currentShutter?.sid
-                                                                        }
-                                                                    currentShutter?.position =
-                                                                        shutter.asJsonObject.get("state").asJsonObject.get(
-                                                                            "position"
-                                                                        ).asInt
-                                                                } while (shutter.asJsonObject.get("state").asJsonObject.get(
-                                                                        "run_state"
-                                                                    ).asInt != 0
-                                                                )
+                                                            updatePositionOfShutter(client, currentShutter) { updatedShutter ->
+                                                                currentShutter = updatedShutter
                                                             }
-
-
+                                                        }
                                                     }
                                                 }
                                             }
@@ -297,15 +314,15 @@ class MainActivity : ComponentActivity() {
                                 item {
                                     Button(
                                         onClick = {
-                                            println("I have been pressed; " + "up")
-
                                             GlobalScope.launch {
-                                                val response = push(
+                                                push(
                                                     client,
                                                     "http://192.168.188.143/cmd?auth=Auablume",
                                                     "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveUp\"}}"
-                                                )
-                                                println(response.await().body?.string())
+                                                ).await()
+                                                updatePositionOfShutter(client, currentShutter) { updatedShutter ->
+                                                    currentShutter = updatedShutter
+                                                }
                                             }
                                         },
                                         modifier = Modifier
@@ -320,15 +337,12 @@ class MainActivity : ComponentActivity() {
                                 item {
                                     Button(
                                         onClick = {
-
-                                            println("I have been pressed; " + "stop")
                                             GlobalScope.launch {
                                                 val response = push(
                                                     client,
                                                     "http://192.168.188.143/cmd?auth=Auablume",
                                                     "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"stop\"}}"
                                                 )
-                                                println(response.await().body?.string())
                                             }
                                         },
                                         modifier = Modifier
@@ -343,14 +357,15 @@ class MainActivity : ComponentActivity() {
                                 item {
                                     Button(
                                         onClick = {
-                                            println("I have been pressed; " + "down")
                                             GlobalScope.launch {
-                                                val response = push(
+                                                push(
                                                     client,
                                                     "http://192.168.188.143/cmd?auth=Auablume",
                                                     "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveDown\"}}"
-                                                )
-                                                println(response.await().body?.string())
+                                                ).await()
+                                                updatePositionOfShutter(client, currentShutter) { updatedShutter ->
+                                                    currentShutter = updatedShutter
+                                                }
                                             }
                                         },
                                         modifier = Modifier
@@ -380,7 +395,6 @@ class MainActivity : ComponentActivity() {
     fun DefaultPreview(){
         WearApp(true)
     }
-
 }
 
 
