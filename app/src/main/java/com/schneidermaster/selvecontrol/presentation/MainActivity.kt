@@ -30,11 +30,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
-import androidx.wear.compose.foundation.lazy.ScalingLazyColumnDefaults
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
@@ -66,7 +65,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview
+@Preview(device = Devices.WEAR_OS_SMALL_ROUND)
 @Composable
 fun WearApp() {
 
@@ -75,10 +74,18 @@ fun WearApp() {
     val scope = rememberCoroutineScope()
 
     var shutters by remember { mutableStateOf<List<Shutter>?>(null) }
+    var isLoading by remember { mutableStateOf(true) }
+    var currentShutter by remember { mutableStateOf<Shutter?>(null) }
+
+    var shutterIndex by remember {mutableStateOf(0) }
 
     LaunchedEffect(Unit) {
         scope.launch {
             shutters = getShutters(client).await()
+            val firstShutter = shutters!![0]
+            firstShutter.name = getName(client, firstShutter).await()
+            currentShutter = firstShutter
+            isLoading = false
         }
     }
 
@@ -92,7 +99,7 @@ fun WearApp() {
             contentAlignment = Alignment.Center
         )
         {
-            if(shutters == null){
+            if(isLoading){
                 Column (
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
@@ -115,15 +122,54 @@ fun WearApp() {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                if(shutterIndex > 0){
+                                    shutterIndex--
+                                }else{
+                                    shutterIndex = shutters!!.size-1
+                                }
+
+                                val previousShutter = shutters!![shutterIndex]
+
+                                if(previousShutter.name == null){
+                                    scope.launch {
+                                        previousShutter.name = getName(client, previousShutter).await()
+                                        currentShutter = previousShutter
+                                    }
+                                }
+                                else {
+                                    currentShutter = previousShutter
+                                }
+
+
+
+                            },
                             modifier = Modifier
                                 .size(Dp(23f))
                         ) {
                             Text(text = "<")
                         }
-                        Text(text = "First Shutter")
+                        Text(text = currentShutter?.name ?: "")
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                if(shutterIndex < shutters!!.size - 1){
+                                    shutterIndex++
+                                }else{
+                                    shutterIndex = 0
+                                }
+
+                                val nextShutter = shutters!![shutterIndex]
+
+                                if(nextShutter.name == null){
+                                    scope.launch {
+                                        nextShutter.name = getName(client, nextShutter).await()
+                                        currentShutter = nextShutter
+                                    }
+                                }
+                                else {
+                                    currentShutter = nextShutter
+                                }
+                            },
                             modifier = Modifier
                                 .size(Dp(23f))
                         ) {
@@ -143,7 +189,7 @@ fun WearApp() {
                                         val response = post(
                                             client,
                                             "http://192.168.188.143/cmd?auth=Auablume",
-                                            "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"0B\",\"data\":{\"cmd\": \"moveUp\"}}"
+                                            "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveUp\"}}"
                                         )
                                         println(response.await().body?.string())
                                     }
@@ -166,7 +212,7 @@ fun WearApp() {
                                         val response = post(
                                             client,
                                             "http://192.168.188.143/cmd?auth=Auablume",
-                                            "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"0B\",\"data\":{\"cmd\": \"stop\"}}"
+                                            "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"stop\"}}"
                                         )
                                         println(response.await().body?.string())
                                     }
@@ -189,7 +235,7 @@ fun WearApp() {
                                         val response = post(
                                             client,
                                             "http://192.168.188.143/cmd?auth=Auablume",
-                                            "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"0B\",\"data\":{\"cmd\": \"moveDown\"}}"
+                                            "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveDown\"}}"
                                         )
                                         println(response.await().body?.string())
                                     }
@@ -237,17 +283,13 @@ fun getShutters(client: OkHttpClient): Deferred<List<Shutter>> {
         } else {
             error("Didn't receive shutter data.")
         }
-
-//        shutters.forEach {
-//            getName(client, it).await()
-//        }
         println(shutters)
 
         return@async shutters
     }
 }
 
-fun getName(client: OkHttpClient, shutter: Shutter): Deferred<Unit> {
+fun getName(client: OkHttpClient, shutter: Shutter): Deferred<String> {
     return GlobalScope.async {
         val deferredConfigResponse = get(
             client,
@@ -258,11 +300,13 @@ fun getName(client: OkHttpClient, shutter: Shutter): Deferred<Unit> {
 
         if (configJsonResponse != null) {
             val jsonObject = JsonParser.parseString(configJsonResponse).asJsonObject
-            shutter.name =
-                jsonObject.get("XC_SUC").asJsonObject.get("info").asJsonObject.get("configurable").asJsonObject.get(
-                    "name"
-                ).asString
-            println("finished with: " + shutter.name)
+            println("got the name")
+            return@async jsonObject.get("XC_SUC").asJsonObject.get("info").asJsonObject.get("configurable").asJsonObject.get(
+                "name"
+            ).asString
+        }
+        else{
+            error("No Response received.")
         }
     }
 }
