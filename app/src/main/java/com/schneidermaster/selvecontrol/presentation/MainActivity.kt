@@ -9,6 +9,11 @@
 package com.schneidermaster.selvecontrol.presentation
 
 import android.content.Context
+import android.content.res.Configuration
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,6 +23,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -42,6 +48,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.CircularProgressIndicator
@@ -68,10 +75,28 @@ class MainActivity : ComponentActivity() {
 
     private var shutters: List<Shutter>? = null
 
+    lateinit var connectivityManager: ConnectivityManager
+
+    lateinit var callback: ConnectivityManager.NetworkCallback
+
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
 
         super.onCreate(savedInstanceState)
+
+        connectivityManager =  getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        callback  = object : ConnectivityManager.NetworkCallback(){
+            override fun onAvailable(network: Network) {
+                super.onAvailable(network)
+                connectivityManager.bindProcessToNetwork(network)
+                println("Network acquired")
+            }
+        }
+
+        connectivityManager.requestNetwork(
+            NetworkRequest.Builder().addTransportType(NetworkCapabilities.TRANSPORT_WIFI).build(),
+            callback
+        )
 
         println(fileList().asList())
 
@@ -93,6 +118,10 @@ class MainActivity : ComponentActivity() {
                 println(fileList().asList())
             }
         }
+
+        connectivityManager.bindProcessToNetwork(null)
+        connectivityManager.unregisterNetworkCallback(callback)
+
     }
 
     @Composable
@@ -297,13 +326,19 @@ class MainActivity : ComponentActivity() {
                                     },
                                 contentAlignment = Alignment.Center
                             ){
+//                                Box(
+//                                    modifier = Modifier
+//                                        .fillMaxWidth()
+//                                        .background(Color.Blue)
+//                                        .height(Dp(height.toFloat()/2))
+//                                ){}
                                 Box(
                                     modifier = Modifier
                                         .border(Dp(1f), color = Color.Cyan)
                                         .fillMaxSize(),
                                     contentAlignment = Alignment.Center
                                 ){
-                                    Text(text = currentShutter!!.position.toString() + "%", textAlign = TextAlign.Center)
+                                    Text(text = if(debugging){"0%"}else{currentShutter!!.position.toString() + "%"}, textAlign = TextAlign.Center)
                                 }
 
                             }
@@ -390,7 +425,7 @@ class MainActivity : ComponentActivity() {
         this.shutters = shutters
     }
 
-    @Preview(device = Devices.WEAR_OS_SMALL_ROUND)
+    @Preview(device = Devices.WEAR_OS_SMALL_ROUND, showSystemUi = true, showBackground = true, uiMode = Configuration.UI_MODE_TYPE_WATCH)
     @Composable
     fun DefaultPreview(){
         WearApp(true)
