@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -32,14 +34,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import androidx.wear.compose.material.Typography
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.schneidermaster.selvecontrol.presentation.theme.SelveControlTheme
@@ -83,11 +88,8 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-
-
-    @Preview(device = Devices.WEAR_OS_SMALL_ROUND)
     @Composable
-    fun WearApp() {
+    fun WearApp(debugging: Boolean = false) {
 
         val client = OkHttpClient()
 
@@ -111,7 +113,6 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-
         SelveControlTheme (
         ) {
             Box(
@@ -121,7 +122,7 @@ class MainActivity : ComponentActivity() {
                 contentAlignment = Alignment.Center
             )
             {
-                if(isLoading){
+                if(isLoading && !debugging){
                     Column (
                         horizontalAlignment = Alignment.CenterHorizontally
                     ){
@@ -141,7 +142,7 @@ class MainActivity : ComponentActivity() {
                         contentAlignment = Alignment.TopCenter
                     ) {
                         Row(
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalAlignment = Alignment.Bottom
                         ) {
                             Button(
                                 onClick = {
@@ -172,7 +173,20 @@ class MainActivity : ComponentActivity() {
                             ) {
                                 Text(text = "<")
                             }
-                            Text(text = currentShutter?.name ?: "")
+                            Box(
+                                contentAlignment = Alignment.BottomCenter,
+                                modifier = Modifier
+                                    .width(Dp(110f))
+                                    .height(Dp(42f))
+                            ) {
+                                Text(
+                                    text = currentShutter?.name ?: "Küche Fenster",
+                                    textAlign = TextAlign.Center,
+                                    maxLines = 2,
+                                    overflow = TextOverflow.Ellipsis,
+
+                                )
+                            }
                             Button(
                                 onClick = {
                                     if(shutterIndex < shutters!!.size - 1){
@@ -200,78 +214,92 @@ class MainActivity : ComponentActivity() {
                                 Text(text = ">")
                             }
                         }
-                        LazyColumn(
-                            modifier = Modifier
-                                .padding(top = Dp(25f))
+                        Row(
+                            verticalAlignment = Alignment.Bottom
                         ) {
-                            item {
-                                Button(
-                                    onClick = {
-                                        println("I have been pressed; " + "up")
 
-                                        GlobalScope.launch {
-                                            val response = post(
-                                                client,
-                                                "http://192.168.188.143/cmd?auth=Auablume",
-                                                "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveUp\"}}"
-                                            )
-                                            println(response.await().body?.string())
-                                        }
-                                    },
-                                    modifier = Modifier
-                                        .height(Dp(40f))
-                                        .padding(top = Dp(5f))
-                                )
-                                {
-                                    Text(text = "Up")
-                                }
+                            Box(
+                                modifier = Modifier
+                                    .height(Dp(120f))
+                                    .width(Dp(50f)),
+                                contentAlignment = Alignment.Center
+
+                            ){
+                                Text(text = "TODO: display position")
                             }
+                            LazyColumn(
+                                modifier = Modifier
+                                    .padding(top = Dp(38f))
+                            ) {
+                                item {
+                                    Button(
+                                        onClick = {
+                                            println("I have been pressed; " + "up")
 
-                            item {
-                                Button(
-                                    onClick = {
-
-                                        println("I have been pressed; " + "stop")
-                                        GlobalScope.launch {
-                                            val response = post(
-                                                client,
-                                                "http://192.168.188.143/cmd?auth=Auablume",
-                                                "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"stop\"}}"
-                                            )
-                                            println(response.await().body?.string())
-                                        }
-                                    },
-                                    modifier = Modifier
-                                        .height(Dp(40f))
-                                        .padding(top = Dp(5f))
-                                )
-                                {
-                                    Text(text = "Stop")
+                                            GlobalScope.launch {
+                                                val response = post(
+                                                    client,
+                                                    "http://192.168.188.143/cmd?auth=Auablume",
+                                                    "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveUp\"}}"
+                                                )
+                                                println(response.await().body?.string())
+                                            }
+                                        },
+                                        modifier = Modifier
+                                            .height(Dp(40f))
+                                            .padding(top = Dp(5f))
+                                    )
+                                    {
+                                        Text(text = "Up")
+                                    }
                                 }
-                            }
 
-                            item {
-                                Button(
-                                    onClick = {
-                                        println("I have been pressed; " + "down")
-                                        GlobalScope.launch {
-                                            val response = post(
-                                                client,
-                                                "http://192.168.188.143/cmd?auth=Auablume",
-                                                "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveDown\"}}"
-                                            )
-                                            println(response.await().body?.string())
-                                        }
-                                    },
-                                    modifier = Modifier
-                                        .height(Dp(40f))
-                                        .padding(top = Dp(5f))
-                                )
-                                {
-                                    Text(text = "Down")
+                                item {
+                                    Button(
+                                        onClick = {
+
+                                            println("I have been pressed; " + "stop")
+                                            GlobalScope.launch {
+                                                val response = post(
+                                                    client,
+                                                    "http://192.168.188.143/cmd?auth=Auablume",
+                                                    "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"stop\"}}"
+                                                )
+                                                println(response.await().body?.string())
+                                            }
+                                        },
+                                        modifier = Modifier
+                                            .height(Dp(40f))
+                                            .padding(top = Dp(5f))
+                                    )
+                                    {
+                                        Text(text = "Stop")
+                                    }
                                 }
-                            }
 
+                                item {
+                                    Button(
+                                        onClick = {
+                                            println("I have been pressed; " + "down")
+                                            GlobalScope.launch {
+                                                val response = post(
+                                                    client,
+                                                    "http://192.168.188.143/cmd?auth=Auablume",
+                                                    "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveDown\"}}"
+                                                )
+                                                println(response.await().body?.string())
+                                            }
+                                        },
+                                        modifier = Modifier
+                                            .height(Dp(40f))
+                                            .padding(top = Dp(5f))
+                                    )
+                                    {
+                                        Text(text = "Down")
+                                    }
+                                }
+
+                            }
                         }
                     }
                 }
@@ -282,6 +310,12 @@ class MainActivity : ComponentActivity() {
 
     private fun updateShutters(shutters: List<Shutter>){
         this.shutters = shutters
+    }
+
+    @Preview(device = Devices.WEAR_OS_SMALL_ROUND)
+    @Composable
+    fun DefaultPreview(){
+        WearApp(true)
     }
 
 }
