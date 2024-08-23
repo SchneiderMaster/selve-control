@@ -1,6 +1,7 @@
 package com.schneidermaster.selvecontrol.tools.shutters
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.JsonParser
 import com.schneidermaster.selvecontrol.tools.httprequests.get
 import kotlinx.coroutines.Deferred
@@ -14,26 +15,32 @@ fun getShutters(client: OkHttpClient, context: Context): Deferred<List<Shutter>>
     return GlobalScope.async {
         val shutters: List<Shutter>
 
-        var json = ""
-        context.openFileInput("shutterData.json").bufferedReader().useLines {lines ->
-            lines.forEach {
-                json += it
+        if(context.fileList().contains("shutterData.json")){
+            var json = ""
+            context.openFileInput("shutterData.json").bufferedReader().useLines {lines ->
+                lines.forEach {
+                    json += it
+                }
             }
+            println(context.filesDir.absolutePath)
+            println(json)
+
+            shutters = JsonParser.parseString(json).asJsonArray.map { it ->
+                val obj = it.asJsonObject
+                Shutter(
+                    sid = obj.get("sid").asString,
+                    adr = obj.get("adr").asString,
+                    position = obj.get("position").asInt,
+                    name = obj.get("name")?.takeIf { !it.isJsonNull }?.asString
+                )
+            }
+
+            println(shutters)
+
+            return@async shutters
         }
 
-        shutters = JsonParser.parseString(json).asJsonObject.getAsJsonArray().map {
-            val obj = it.asJsonObject
-            Shutter(
-                sid = obj.get("sid").asString,
-                adr = obj.get("adr").asString,
-                position = obj.get("position").asInt,
-                name = obj.get("name").asString
-            )
-        }
-
-
-
-
+        Log.println(Log.WARN, "SelveControl", "shutterData.json not found\nFetching Shutter Data from Server...")
 
         val deferredStatesResponse =
             get(client, "http://192.168.188.143/cmd?XC_FNC=GetStates&auth=Auablume")

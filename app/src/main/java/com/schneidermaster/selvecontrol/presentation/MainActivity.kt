@@ -41,6 +41,7 @@ import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.schneidermaster.selvecontrol.presentation.theme.SelveControlTheme
 import com.schneidermaster.selvecontrol.tools.httprequests.post
 import com.schneidermaster.selvecontrol.tools.shutters.Shutter
@@ -72,7 +73,9 @@ class MainActivity : ComponentActivity() {
     override fun onDestroy() {
         super.onDestroy()
         if(!isChangingConfigurations){
-            val gson = Gson()
+            val gson = GsonBuilder()
+                .serializeNulls()
+                .create()
             openFileOutput("shutterData.json", Context.MODE_PRIVATE).use {
                 it.write(gson.toJson(shutters).toByteArray())
                 println(fileList().asList())
@@ -99,7 +102,9 @@ class MainActivity : ComponentActivity() {
             scope.launch {
                 shutters = getShutters(client, this@MainActivity).await()
                 val firstShutter = shutters!![0]
-                firstShutter.name = getName(client, firstShutter).await()
+                if(firstShutter.name == null) {
+                    firstShutter.name = getName(client, firstShutter).await()
+                }
                 currentShutter = firstShutter
                 updateShutters(shutters!!)
                 isLoading = false
