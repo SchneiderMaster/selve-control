@@ -18,6 +18,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -49,6 +50,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.input.pointer.changedToUp
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -209,22 +211,25 @@ class MainActivity : ComponentActivity() {
 
                         Button(onClick = {
 
-                            try {
-                                scope.launch {
-                                    println("I'm trying really hard")
+                            scope.launch {
+                                try {
                                     get(
                                         client,
-                                        "http://$serverIP/cmd?XC_FNC=GetStates&auth=$serverPassword"
+                                        "http://$serverIpText/cmd?XC_FNC=GetStates&auth=$serverPasswordText"
                                     ).await()
-                                    serverIP = serverIpText
-                                    serverPassword = serverPasswordText
-                                }
-                            } catch (e: Error) {
-                                println("ERROR LOLOLOL")
-                                val text = "Wrong Server IP/ Password!"
-                                val duration = Toast.LENGTH_SHORT
 
-                                Toast.makeText(this@MainActivity, text, duration).show()
+                                    editor.putString("serverIP", serverIpText)
+                                    editor.putString("serverPassword", serverPasswordText)
+                                    editor.apply()
+                                    serverPassword = serverPasswordText
+                                    serverIP = serverIpText
+
+                                } catch (e: Exception) {
+                                    val text = "Wrong Server IP/ Password!"
+                                    val duration = Toast.LENGTH_SHORT
+
+                                    Toast.makeText(this@MainActivity, text, duration).show()
+                                }
                             }
 
 
@@ -452,6 +457,9 @@ class MainActivity : ComponentActivity() {
                                                     .fillMaxSize()
                                                     .background(Color.Blue)
                                             )
+                                            
+                                            Image(painter = painterResource(id = R.drawable.), contentDescription = )
+                                            
                                         }
                                         Text(
                                             text = if (debugging) {
