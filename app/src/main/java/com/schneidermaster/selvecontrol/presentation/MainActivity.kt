@@ -46,10 +46,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.ImageShader
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.ShaderBrush
+import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.input.pointer.changedToUp
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -65,6 +70,7 @@ import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import com.google.gson.GsonBuilder
+import com.schneidermaster.selvecontrol.R
 import com.schneidermaster.selvecontrol.presentation.theme.SelveControlTheme
 import com.schneidermaster.selvecontrol.tools.httprequests.get
 import com.schneidermaster.selvecontrol.tools.httprequests.push
@@ -167,7 +173,8 @@ class MainActivity : ComponentActivity() {
 
         val scope = rememberCoroutineScope()
 
-        var job: Job? = null
+        var cycleJob: Job? = null
+        var moveJob: Job? = null
 
         var isLoading by remember { mutableStateOf(true) }
         var currentShutter by remember { mutableStateOf<Shutter?>(null) }
@@ -286,9 +293,10 @@ class MainActivity : ComponentActivity() {
 
                                         val previousShutter = shutters!![shutterIndex]
 
-                                        job?.cancel()
+                                        moveJob?.cancel()
+                                        cycleJob?.cancel()
                                         currentShutter = previousShutter
-                                        job = scope.launch {
+                                        cycleJob = scope.launch {
                                             withContext(Dispatchers.IO) {
                                                 updatePositionOfShutter(
                                                     client,
@@ -337,9 +345,10 @@ class MainActivity : ComponentActivity() {
 
                                         val nextShutter = shutters!![shutterIndex]
 
-                                        job?.cancel()
+                                        moveJob?.cancel()
+                                        cycleJob?.cancel()
                                         currentShutter = nextShutter
-                                        job = scope.launch {
+                                        cycleJob = scope.launch {
                                             withContext(Dispatchers.IO) {
                                                 updatePositionOfShutter(
                                                     client,
@@ -406,7 +415,8 @@ class MainActivity : ComponentActivity() {
                                                                     0,
                                                                     100
                                                                 )
-                                                            GlobalScope.launch {
+                                                            moveJob?.cancel()
+                                                            moveJob = GlobalScope.launch {
                                                                 push(
                                                                     client,
                                                                     "http://$serverIP/cmd?auth=$serverPassword",
@@ -429,7 +439,7 @@ class MainActivity : ComponentActivity() {
                                 ) {
                                     BoxWithConstraints(
                                         modifier = Modifier
-                                            .border(Dp(1f), color = Color.Cyan)
+                                            .border(Dp(1f), color = Color.Gray)
                                             .fillMaxSize()
                                             .clip(RectangleShape),
                                         contentAlignment = Alignment.Center
@@ -452,14 +462,32 @@ class MainActivity : ComponentActivity() {
                                                 .offset { IntOffset(0, -yOffset) },
                                             contentAlignment = Alignment.Center
                                         ) {
+
+                                            val image =
+                                                ImageBitmap.imageResource(id = R.drawable.shutter_image)
+                                            val brush = remember(image) {
+                                                ShaderBrush(
+                                                    shader = ImageShader(
+                                                        image = image,
+                                                        tileModeX = TileMode.Repeated,
+                                                        tileModeY = TileMode.Repeated
+                                                    )
+                                                )
+                                            }
+
                                             Box(
                                                 modifier = Modifier
                                                     .fillMaxSize()
-                                                    .background(Color.Blue)
+                                                    .background(brush = brush)
                                             )
-                                            
-                                            Image(painter = painterResource(id = R.drawable.), contentDescription = )
-                                            
+
+                                            Image(
+                                                painter = painterResource(id = R.drawable.shutter_image),
+                                                contentDescription = "Shutter",
+                                                modifier = Modifier
+                                                    .fillMaxSize()
+                                            )
+
                                         }
                                         Text(
                                             text = if (debugging) {
@@ -483,7 +511,8 @@ class MainActivity : ComponentActivity() {
                                     item {
                                         Button(
                                             onClick = {
-                                                GlobalScope.launch {
+                                                moveJob?.cancel()
+                                                moveJob = GlobalScope.launch {
                                                     push(
                                                         client,
                                                         "http://$serverIP/cmd?auth=$serverPassword",
@@ -529,7 +558,8 @@ class MainActivity : ComponentActivity() {
                                     item {
                                         Button(
                                             onClick = {
-                                                GlobalScope.launch {
+                                                moveJob?.cancel()
+                                                moveJob = GlobalScope.launch {
                                                     push(
                                                         client,
                                                         "http://$serverIP/cmd?auth=$serverPassword",
