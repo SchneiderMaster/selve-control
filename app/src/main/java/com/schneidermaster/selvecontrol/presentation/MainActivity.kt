@@ -20,15 +20,19 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.overscroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -39,7 +43,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.input.pointer.changedToUp
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
@@ -48,6 +54,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.wear.compose.material.Button
@@ -70,6 +77,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import kotlin.concurrent.thread
+import kotlin.math.roundToInt
 
 class MainActivity : ComponentActivity() {
 
@@ -304,6 +312,13 @@ class MainActivity : ComponentActivity() {
                                                 val event = awaitPointerEvent()
                                                 event.changes.forEach{
                                                     pointerInputChange ->
+
+                                                    if(pointerInputChange.pressed){
+                                                        val position = pointerInputChange.position
+                                                        tapPosition = position.y.toInt()
+                                                        val targetPosition = (tapPosition.toFloat()/height.toFloat()*100).toInt()
+                                                    }
+
                                                     if(pointerInputChange.changedToUp()){
                                                         val position = pointerInputChange.position
                                                         tapPosition = position.y.toInt()
@@ -326,19 +341,30 @@ class MainActivity : ComponentActivity() {
                                     },
                                 contentAlignment = Alignment.Center
                             ){
-//                                Box(
-//                                    modifier = Modifier
-//                                        .fillMaxWidth()
-//                                        .background(Color.Blue)
-//                                        .height(Dp(height.toFloat()/2))
-//                                ){}
-                                Box(
+                                BoxWithConstraints(
                                     modifier = Modifier
                                         .border(Dp(1f), color = Color.Cyan)
-                                        .fillMaxSize(),
+                                        .fillMaxSize()
+                                        .clip(RectangleShape),
                                     contentAlignment = Alignment.Center
                                 ){
-                                    Text(text = if(debugging){"0%"}else{currentShutter!!.position.toString() + "%"}, textAlign = TextAlign.Center)
+                                    val parentHeight = constraints.maxHeight
+
+                                    val yOffset = if(debugging){(parentHeight - parentHeight * 0.4).roundToInt()}else{(parentHeight - parentHeight * currentShutter!!.position!!.toFloat()/100).roundToInt()}
+
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxSize()
+                                            .offset{IntOffset(0, -yOffset)},
+                                        contentAlignment = Alignment.Center
+                                    ){
+                                        Box(
+                                            modifier = Modifier
+                                                .fillMaxSize()
+                                                .background(Color.Blue)
+                                        )
+                                    }
+                                    Text(text = if(debugging){"40%"}else{currentShutter!!.position.toString() + "%"}, textAlign = TextAlign.Center)
                                 }
 
                             }
