@@ -23,16 +23,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.overscroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -55,7 +52,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.dp
+import androidx.core.math.MathUtils.clamp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.CircularProgressIndicator
@@ -72,11 +69,9 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
-import kotlin.concurrent.thread
 import kotlin.math.roundToInt
 
 class MainActivity : ComponentActivity() {
@@ -85,7 +80,7 @@ class MainActivity : ComponentActivity() {
 
     lateinit var connectivityManager: ConnectivityManager
 
-    lateinit var callback: ConnectivityManager.NetworkCallback
+    private lateinit var callback: ConnectivityManager.NetworkCallback
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -143,10 +138,11 @@ class MainActivity : ComponentActivity() {
 
         var isLoading by remember { mutableStateOf(true) }
         var currentShutter by remember { mutableStateOf<Shutter?>(null) }
-        var shutters by remember { mutableStateOf<MutableList<Shutter>?>(null) }
+        var shutters by remember { mutableStateOf<List<Shutter>?>(null) }
         var shutterIndex by remember { mutableIntStateOf(0) }
         var tapPosition by remember { mutableIntStateOf(0) }
         var height by remember { mutableIntStateOf(0) }
+        var previewPosition by remember { mutableIntStateOf(-1) }
 
         LaunchedEffect(Unit) {
             scope.launch {
@@ -203,7 +199,8 @@ class MainActivity : ComponentActivity() {
                                     val previousShutter = shutters!![shutterIndex]
 
                                     if(previousShutter.name == null){
-                                        scope.launch {
+                                        job?.cancel()
+                                        job = scope.launch {
                                             previousShutter.name = getName(client, previousShutter).await()
                                             updateShutters(shutters!!)
                                             currentShutter = previousShutter
@@ -222,7 +219,9 @@ class MainActivity : ComponentActivity() {
                                                         withContext(Dispatchers.Main) {
                                                             currentShutter = updatedShutter
                                                             updateShutters(shutters!!)
-                                                            shutters!![shutterIndex] = currentShutter!!
+                                                            shutters = shutters!!.mapIndexed{ index, value ->
+                                                                if(index == shutterIndex) currentShutter!! else value
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -242,7 +241,7 @@ class MainActivity : ComponentActivity() {
                                     .height(Dp(42f))
                             ) {
                                 Text(
-                                    text = currentShutter?.name ?: "Küche Fenster",
+                                    text = currentShutter?.name ?: "Kitchen Window test long",
                                     textAlign = TextAlign.Center,
                                     maxLines = 2,
                                     overflow = TextOverflow.Ellipsis,
@@ -260,7 +259,8 @@ class MainActivity : ComponentActivity() {
                                     val nextShutter = shutters!![shutterIndex]
 
                                     if(nextShutter.name == null){
-                                        scope.launch {
+                                        job?.cancel()
+                                        job = scope.launch {
                                             nextShutter.name = getName(client, nextShutter).await()
                                             updateShutters(shutters!!)
                                             currentShutter = nextShutter
@@ -279,8 +279,9 @@ class MainActivity : ComponentActivity() {
                                                         withContext(Dispatchers.Main) {
                                                             currentShutter = updatedShutter
                                                             updateShutters(shutters!!)
-                                                            shutters!![shutterIndex] =
-                                                                currentShutter!!
+                                                            shutters = shutters!!.mapIndexed{ index, value ->
+                                                                if(index == shutterIndex) currentShutter!! else value
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -302,27 +303,32 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier
                                     .height(Dp(120f))
                                     .width(Dp(80f))
-                                    .padding(top= Dp(10f), end = Dp(8f), bottom = Dp(5f))
+                                    .padding(top = Dp(10f), end = Dp(8f), bottom = Dp(5f))
                                     .onSizeChanged { size ->
                                         height = size.height
                                     }
-                                    .pointerInput(Unit){
-                                        while(true){
+                                    .pointerInput(Unit) {
+                                        while (true) {
                                             awaitPointerEventScope {
                                                 val event = awaitPointerEvent()
-                                                event.changes.forEach{
-                                                    pointerInputChange ->
+                                                event.changes.forEach { pointerInputChange ->
 
-                                                    if(pointerInputChange.pressed){
+                                                    if (pointerInputChange.pressed) {
                                                         val position = pointerInputChange.position
                                                         tapPosition = position.y.toInt()
-                                                        val targetPosition = (tapPosition.toFloat()/height.toFloat()*100).toInt()
+                                                        val targetPosition =
+                                                            (tapPosition.toFloat() / height.toFloat() * 100).toInt()
+
+                                                        previewPosition = clamp(targetPosition, 0, 100)
+
                                                     }
 
-                                                    if(pointerInputChange.changedToUp()){
+                                                    if (pointerInputChange.changedToUp()) {
+                                                        previewPosition = -1
                                                         val position = pointerInputChange.position
                                                         tapPosition = position.y.toInt()
-                                                        val targetPosition = (tapPosition.toFloat()/height.toFloat()*100).toInt()
+                                                        val targetPosition =
+                                                            clamp((tapPosition.toFloat() / height.toFloat() * 100).toInt(), 0, 100)
                                                         GlobalScope.launch {
                                                             push(
                                                                 client,
@@ -330,7 +336,10 @@ class MainActivity : ComponentActivity() {
                                                                 "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + currentShutter?.sid + "\",\"data\":{\"cmd\": \"moveTo\", \"value\": " + targetPosition + "}}"
                                                             ).await()
 
-                                                            updatePositionOfShutter(client, currentShutter) { updatedShutter ->
+                                                            updatePositionOfShutter(
+                                                                client,
+                                                                currentShutter
+                                                            ) { updatedShutter ->
                                                                 currentShutter = updatedShutter
                                                             }
                                                         }
@@ -350,12 +359,20 @@ class MainActivity : ComponentActivity() {
                                 ){
                                     val parentHeight = constraints.maxHeight
 
-                                    val yOffset = if(debugging){(parentHeight - parentHeight * 0.4).roundToInt()}else{(parentHeight - parentHeight * currentShutter!!.position!!.toFloat()/100).roundToInt()}
+                                    val yOffset = if(debugging){
+                                        (parentHeight - parentHeight * 0.4).roundToInt()
+                                    }else{
+                                        if(previewPosition == -1) {
+                                            (parentHeight - parentHeight * currentShutter!!.position!!.toFloat() / 100).roundToInt()
+                                        }else{
+                                            (parentHeight - parentHeight * previewPosition.toFloat()/100).roundToInt()
+                                        }
+                                    }
 
                                     Box(
                                         modifier = Modifier
                                             .fillMaxSize()
-                                            .offset{IntOffset(0, -yOffset)},
+                                            .offset { IntOffset(0, -yOffset) },
                                         contentAlignment = Alignment.Center
                                     ){
                                         Box(
@@ -364,7 +381,18 @@ class MainActivity : ComponentActivity() {
                                                 .background(Color.Blue)
                                         )
                                     }
-                                    Text(text = if(debugging){"40%"}else{currentShutter!!.position.toString() + "%"}, textAlign = TextAlign.Center)
+                                    Text(
+                                        text = if(debugging) {
+                                            "40%"
+                                        }else {
+                                            if(previewPosition == -1) {
+                                                currentShutter!!.position.toString() + "%"
+                                            }
+                                            else{
+                                                previewPosition.toString() + "%"
+                                            }
+                                        },
+                                        textAlign = TextAlign.Center)
                                 }
 
                             }
@@ -399,11 +427,11 @@ class MainActivity : ComponentActivity() {
                                     Button(
                                         onClick = {
                                             GlobalScope.launch {
-                                                val response = push(
+                                                push(
                                                     client,
                                                     "http://192.168.188.143/cmd?auth=Auablume",
                                                     "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"stop\"}}"
-                                                )
+                                                ).await()
                                             }
                                         },
                                         modifier = Modifier
