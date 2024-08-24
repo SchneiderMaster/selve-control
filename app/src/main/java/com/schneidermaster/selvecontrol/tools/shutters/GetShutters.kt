@@ -66,7 +66,10 @@ fun getShutters(client: OkHttpClient, context: Context): Deferred<List<Shutter>>
         } else {
             error("Didn't receive shutter data.")
         }
-        println(shutters)
+
+        shutters.forEach{
+            it.name = getName(client, it).await()
+        }
 
         return@async shutters
     }
