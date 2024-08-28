@@ -7,11 +7,11 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import okhttp3.OkHttpClient
 
-fun getName(client: OkHttpClient, shutter: Shutter): Deferred<String> {
+fun getName(client: OkHttpClient, shutter: Shutter, serverIp: String, serverPassword: String): Deferred<String> {
     return GlobalScope.async {
         val deferredConfigResponse = get(
             client,
-            "http://192.168.188.143/cmd?XC_FNC=GetConfig&type=CM&adr=" + shutter.adr + "&auth=Auablume"
+            "http://$serverIp/cmd?XC_FNC=GetConfig&type=CM&adr=" + shutter.adr + "&auth=$serverPassword"
         )
         val configResponse = deferredConfigResponse.await()
         val configJsonResponse = configResponse.body?.string()

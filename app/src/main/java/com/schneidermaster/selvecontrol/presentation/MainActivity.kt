@@ -1,9 +1,3 @@
-/* While this template provides a good starting point for using Wear Compose, you can always
- * take a look at https://github.com/android/wear-os-samples/tree/main/ComposeStarter and
- * https://github.com/android/wear-os-samples/tree/main/ComposeAdvanced to find the most up to date
- * changes to the libraries and their usages.
- */
-
 @file:OptIn(DelicateCoroutinesApi::class)
 
 package com.schneidermaster.selvecontrol.presentation
@@ -18,12 +12,16 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -63,12 +61,14 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.dp
 import androidx.core.math.MathUtils.clamp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import androidx.wear.compose.material.dialog.Alert
 import com.google.gson.GsonBuilder
 import com.schneidermaster.selvecontrol.R
 import com.schneidermaster.selvecontrol.presentation.theme.SelveControlTheme
@@ -143,6 +143,7 @@ class MainActivity : ComponentActivity() {
 
     }
 
+    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     fun WearApp(debugging: Boolean = false) {
 
@@ -185,6 +186,7 @@ class MainActivity : ComponentActivity() {
         var previewPosition by remember { mutableIntStateOf(-1) }
         var serverIpText by remember { mutableStateOf("") }
         var serverPasswordText by remember { mutableStateOf("") }
+        var isResetting by remember { mutableStateOf(false) }
 
 
 
@@ -193,7 +195,13 @@ class MainActivity : ComponentActivity() {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(MaterialTheme.colors.background),
+                    .background(MaterialTheme.colors.background)
+                    .combinedClickable(
+                        onClick = {},
+                        onLongClick = {
+                            isResetting = true
+                        }
+                    ),
                 contentAlignment = Alignment.Center
             )
             {
@@ -218,7 +226,7 @@ class MainActivity : ComponentActivity() {
 
                         Button(onClick = {
 
-                            scope.launch {
+                            GlobalScope.launch {
                                 try {
                                     get(
                                         client,
@@ -246,16 +254,15 @@ class MainActivity : ComponentActivity() {
 
                     }
                 } else {
-
                     if (isLoading && !debugging) {
                         LaunchedEffect(Unit) {
-                            scope.launch {
-                                shutters = getShutters(client, this@MainActivity).await()
+                            GlobalScope.launch {
+                                shutters = getShutters(client, this@MainActivity, serverIP, serverPassword).await()
                                     .toMutableList()
                                 val firstShutter = shutters!![0]
                                 if (firstShutter.name == null) {
                                     firstShutter.name =
-                                        getName(client, firstShutter).await()
+                                        getName(client, firstShutter, serverIP, serverPassword).await()
                                 }
                                 currentShutter = firstShutter
                                 updateShutters(shutters!!)
@@ -277,311 +284,360 @@ class MainActivity : ComponentActivity() {
                         }
 
                     } else {
-                        Box(
-                            contentAlignment = Alignment.TopCenter
-                        ) {
-                            Row(
-                                verticalAlignment = Alignment.Bottom
-                            ) {
-                                Button(
-                                    onClick = {
-                                        if (shutterIndex > 0) {
-                                            shutterIndex--
-                                        } else {
-                                            shutterIndex = shutters!!.size - 1
-                                        }
-
-                                        val previousShutter = shutters!![shutterIndex]
-
-                                        moveJob?.cancel()
-                                        cycleJob?.cancel()
-                                        currentShutter = previousShutter
-                                        cycleJob = scope.launch {
-                                            withContext(Dispatchers.IO) {
-                                                updatePositionOfShutter(
-                                                    client,
-                                                    previousShutter
-                                                ) { updatedShutter ->
-                                                    scope.launch {
-                                                        withContext(Dispatchers.Main) {
-                                                            currentShutter = updatedShutter
-                                                            updateShutters(shutters!!)
-                                                            shutters =
-                                                                shutters!!.mapIndexed { index, value ->
-                                                                    if (index == shutterIndex) currentShutter!! else value
-                                                                }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    modifier = Modifier
-                                        .size(Dp(23f))
-                                ) {
-                                    Text(text = "<")
-                                }
-                                Box(
-                                    contentAlignment = Alignment.BottomCenter,
-                                    modifier = Modifier
-                                        .width(Dp(110f))
-                                        .height(Dp(42f))
-                                ) {
+                        if(isResetting) {
+                            Alert(
+                                contentPadding = PaddingValues(start = 10.dp, end = 10.dp, top = 24.dp, bottom = 32.dp),
+                                title = {
                                     Text(
-                                        text = currentShutter?.name ?: "Kitchen Window test long",
-                                        textAlign = TextAlign.Center,
-                                        maxLines = 2,
-                                        overflow = TextOverflow.Ellipsis,
+                                        "Do you want to reset all data?",
+                                        textAlign = TextAlign.Center
+                                    )
+                                },
+                                negativeButton = {
+                                    Button(onClick = {
+                                        isResetting = false
+                                    }){ Text("No")}
+                                },
+                                positiveButton = {
+                                    Button(onClick = {
+                                        editor.putString("serverIP", "")
+                                        editor.putString("serverPassword", "")
 
-                                        )
+                                        serverIpText = ""
+                                        serverPasswordText = ""
+
+                                        serverIP = ""
+                                        serverPassword = ""
+
+                                        isResetting = false
+                                        isLoading = true
+
+                                        this@MainActivity.deleteFile("shutterData.json")
+
+                                        editor.apply()
+                                    }) {Text("Yes")}
                                 }
-                                Button(
-                                    onClick = {
-                                        if (shutterIndex < shutters!!.size - 1) {
-                                            shutterIndex++
-                                        } else {
-                                            shutterIndex = 0
-                                        }
-
-                                        val nextShutter = shutters!![shutterIndex]
-
-                                        moveJob?.cancel()
-                                        cycleJob?.cancel()
-                                        currentShutter = nextShutter
-                                        cycleJob = scope.launch {
-                                            withContext(Dispatchers.IO) {
-                                                updatePositionOfShutter(
-                                                    client,
-                                                    nextShutter
-                                                ) { updatedShutter ->
-                                                    scope.launch {
-                                                        withContext(Dispatchers.Main) {
-                                                            currentShutter = updatedShutter
-                                                            updateShutters(shutters!!)
-                                                            shutters =
-                                                                shutters!!.mapIndexed { index, value ->
-                                                                    if (index == shutterIndex) currentShutter!! else value
-                                                                }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    modifier = Modifier
-                                        .size(Dp(23f))
-                                ) {
-                                    Text(text = ">")
-                                }
-                            }
-                            Row(
-                                verticalAlignment = Alignment.Bottom
                             ) {
 
-                                Box(
-                                    modifier = Modifier
-                                        .height(Dp(120f))
-                                        .width(Dp(80f))
-                                        .padding(top = Dp(10f), end = Dp(8f), bottom = Dp(5f))
-                                        .onSizeChanged { size ->
-                                            height = size.height
-                                        }
-                                        .pointerInput(Unit) {
-                                            while (true) {
-                                                awaitPointerEventScope {
-                                                    val event = awaitPointerEvent()
-                                                    event.changes.forEach { pointerInputChange ->
+                            }
+                        }
+                        else {
 
-                                                        if (pointerInputChange.pressed) {
-                                                            val position =
-                                                                pointerInputChange.position
-                                                            tapPosition = position.y.toInt()
-                                                            val targetPosition =
-                                                                (tapPosition.toFloat() / height.toFloat() * 100).toInt()
+                            Box(
+                                contentAlignment = Alignment.TopCenter
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.Bottom
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            if (shutterIndex > 0) {
+                                                shutterIndex--
+                                            } else {
+                                                shutterIndex = shutters!!.size - 1
+                                            }
 
-                                                            previewPosition =
-                                                                clamp(targetPosition, 0, 100)
+                                            val previousShutter = shutters!![shutterIndex]
 
-                                                        }
-
-                                                        if (pointerInputChange.changedToUp()) {
-                                                            previewPosition = -1
-                                                            val position =
-                                                                pointerInputChange.position
-                                                            tapPosition = position.y.toInt()
-                                                            val targetPosition =
-                                                                clamp(
-                                                                    (tapPosition.toFloat() / height.toFloat() * 100).toInt(),
-                                                                    0,
-                                                                    100
-                                                                )
-                                                            moveJob?.cancel()
-                                                            moveJob = GlobalScope.launch {
-                                                                push(
-                                                                    client,
-                                                                    "http://$serverIP/cmd?auth=$serverPassword",
-                                                                    "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + currentShutter?.sid + "\",\"data\":{\"cmd\": \"moveTo\", \"value\": " + targetPosition + "}}"
-                                                                ).await()
-
-                                                                updatePositionOfShutter(
-                                                                    client,
-                                                                    currentShutter
-                                                                ) { updatedShutter ->
-                                                                    currentShutter = updatedShutter
-                                                                }
+                                            moveJob?.cancel()
+                                            cycleJob?.cancel()
+                                            currentShutter = previousShutter
+                                            cycleJob = GlobalScope.launch {
+                                                withContext(Dispatchers.IO) {
+                                                    updatePositionOfShutter(
+                                                        client,
+                                                        previousShutter, serverIP, serverPassword
+                                                    ) { updatedShutter ->
+                                                        // there may be a problem with this still happening
+                                                        // after the previous job was already cancelled,
+                                                        // thus currentShutter gets inserted into shutters
+                                                        // multiple times
+                                                        scope.launch {
+                                                            withContext(Dispatchers.Main) {
+                                                                currentShutter = updatedShutter
+                                                                updateShutters(shutters!!)
+                                                                shutters =
+                                                                    shutters!!.mapIndexed { index, value ->
+                                                                        if (index == shutterIndex) currentShutter!! else value
+                                                                    }
                                                             }
                                                         }
                                                     }
                                                 }
                                             }
                                         },
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    BoxWithConstraints(
                                         modifier = Modifier
-                                            .border(Dp(1f), color = Color.Gray)
-                                            .fillMaxSize()
-                                            .clip(RectangleShape),
+                                            .size(Dp(23f))
+                                    ) {
+                                        Text(text = "<")
+                                    }
+                                    Box(
+                                        contentAlignment = Alignment.BottomCenter,
+                                        modifier = Modifier
+                                            .width(Dp(110f))
+                                            .height(Dp(42f))
+                                    ) {
+                                        Text(
+                                            text = currentShutter?.name
+                                                ?: "Kitchen Window test long",
+                                            textAlign = TextAlign.Center,
+                                            maxLines = 2,
+                                            overflow = TextOverflow.Ellipsis,
+
+                                            )
+                                    }
+                                    Button(
+                                        onClick = {
+                                            if (shutterIndex < shutters!!.size - 1) {
+                                                shutterIndex++
+                                            } else {
+                                                shutterIndex = 0
+                                            }
+
+                                            val nextShutter = shutters!![shutterIndex]
+
+                                            moveJob?.cancel()
+                                            cycleJob?.cancel()
+                                            currentShutter = nextShutter
+                                            cycleJob = GlobalScope.launch {
+                                                withContext(Dispatchers.IO) {
+                                                    updatePositionOfShutter(
+                                                        client,
+                                                        nextShutter, serverIP, serverPassword
+                                                    ) { updatedShutter ->
+                                                        scope.launch {
+                                                            withContext(Dispatchers.Main) {
+                                                                currentShutter = updatedShutter
+                                                                updateShutters(shutters!!)
+                                                                shutters =
+                                                                    shutters!!.mapIndexed { index, value ->
+                                                                        if (index == shutterIndex) currentShutter!! else value
+                                                                    }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        modifier = Modifier
+                                            .size(Dp(23f))
+                                    ) {
+                                        Text(text = ">")
+                                    }
+                                }
+                                Row(
+                                    verticalAlignment = Alignment.Bottom
+                                ) {
+
+                                    Box(
+                                        modifier = Modifier
+                                            .height(Dp(120f))
+                                            .width(Dp(80f))
+                                            .padding(top = Dp(10f), end = Dp(8f), bottom = Dp(5f))
+                                            .onSizeChanged { size ->
+                                                height = size.height
+                                            }
+                                            .pointerInput(Unit) {
+                                                while (true) {
+                                                    awaitPointerEventScope {
+                                                        val event = awaitPointerEvent()
+                                                        event.changes.forEach { pointerInputChange ->
+
+                                                            if (pointerInputChange.pressed) {
+                                                                val position =
+                                                                    pointerInputChange.position
+                                                                tapPosition = position.y.toInt()
+                                                                val targetPosition =
+                                                                    (tapPosition.toFloat() / height.toFloat() * 100).toInt()
+
+                                                                previewPosition =
+                                                                    clamp(targetPosition, 0, 100)
+
+                                                            }
+
+                                                            if (pointerInputChange.changedToUp()) {
+                                                                previewPosition = -1
+                                                                val position =
+                                                                    pointerInputChange.position
+                                                                tapPosition = position.y.toInt()
+                                                                val targetPosition =
+                                                                    clamp(
+                                                                        (tapPosition.toFloat() / height.toFloat() * 100).toInt(),
+                                                                        0,
+                                                                        100
+                                                                    )
+                                                                moveJob?.cancel()
+                                                                moveJob = GlobalScope.launch {
+                                                                    push(
+                                                                        client,
+                                                                        "http://$serverIP/cmd?auth=$serverPassword",
+                                                                        "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + currentShutter?.sid + "\",\"data\":{\"cmd\": \"moveTo\", \"value\": " + targetPosition + "}}"
+                                                                    ).await()
+
+                                                                    updatePositionOfShutter(
+                                                                        client,
+                                                                        currentShutter,
+                                                                        serverIP,
+                                                                        serverPassword
+                                                                    ) { updatedShutter ->
+                                                                        currentShutter =
+                                                                            updatedShutter
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                         contentAlignment = Alignment.Center
                                     ) {
-                                        val parentHeight = constraints.maxHeight
-
-                                        val yOffset = if (debugging) {
-                                            (parentHeight - parentHeight * 0.4).roundToInt()
-                                        } else {
-                                            if (previewPosition == -1) {
-                                                (parentHeight - parentHeight * currentShutter!!.position!!.toFloat() / 100).roundToInt()
-                                            } else {
-                                                (parentHeight - parentHeight * previewPosition.toFloat() / 100).roundToInt()
-                                            }
-                                        }
-
-                                        Box(
+                                        BoxWithConstraints(
                                             modifier = Modifier
+                                                .border(Dp(1f), color = Color.Gray)
                                                 .fillMaxSize()
-                                                .offset { IntOffset(0, -yOffset) },
+                                                .clip(RectangleShape),
                                             contentAlignment = Alignment.Center
                                         ) {
+                                            val parentHeight = constraints.maxHeight
 
-                                            val image =
-                                                ImageBitmap.imageResource(id = R.drawable.shutter_image)
-                                            val brush = remember(image) {
-                                                ShaderBrush(
-                                                    shader = ImageShader(
-                                                        image = image,
-                                                        tileModeX = TileMode.Repeated,
-                                                        tileModeY = TileMode.Repeated
-                                                    )
-                                                )
+                                            val yOffset = if (debugging) {
+                                                (parentHeight - parentHeight * 0.4).roundToInt()
+                                            } else {
+                                                if (previewPosition == -1) {
+                                                    (parentHeight - parentHeight * currentShutter!!.position!!.toFloat() / 100).roundToInt()
+                                                } else {
+                                                    (parentHeight - parentHeight * previewPosition.toFloat() / 100).roundToInt()
+                                                }
                                             }
 
                                             Box(
                                                 modifier = Modifier
                                                     .fillMaxSize()
-                                                    .background(brush = brush)
-                                            )
+                                                    .offset { IntOffset(0, -yOffset) },
+                                                contentAlignment = Alignment.Center
+                                            ) {
 
-                                            Image(
-                                                painter = painterResource(id = R.drawable.shutter_image),
-                                                contentDescription = "Shutter",
-                                                modifier = Modifier
-                                                    .fillMaxSize()
-                                            )
+                                                // image from https://www.pinterest.de/pin/612278511829119061/
+                                                val image =
+                                                    ImageBitmap.imageResource(id = R.drawable.shutter_image)
+                                                val brush = remember(image) {
+                                                    ShaderBrush(
+                                                        shader = ImageShader(
+                                                            image = image,
+                                                            tileModeX = TileMode.Repeated,
+                                                            tileModeY = TileMode.Repeated
+                                                        )
+                                                    )
+                                                }
 
-                                        }
-                                        Text(
-                                            text = if (debugging) {
-                                                "40%"
-                                            } else {
-                                                if (previewPosition == -1) {
-                                                    currentShutter!!.position.toString() + "%"
+                                                Box(
+                                                    modifier = Modifier
+                                                        .fillMaxSize()
+                                                        .background(brush = brush)
+                                                )
+
+                                                Image(
+                                                    painter = painterResource(id = R.drawable.shutter_image),
+                                                    contentDescription = "Shutter",
+                                                    modifier = Modifier
+                                                        .fillMaxSize()
+                                                )
+
+                                            }
+                                            Text(
+                                                text = if (debugging) {
+                                                    "40%"
                                                 } else {
-                                                    "$previewPosition%"
-                                                }
-                                            },
-                                            textAlign = TextAlign.Center
-                                        )
-                                    }
-
-                                }
-                                LazyColumn(
-                                    modifier = Modifier
-                                        .padding(top = Dp(38f))
-                                ) {
-                                    item {
-                                        Button(
-                                            onClick = {
-                                                moveJob?.cancel()
-                                                moveJob = GlobalScope.launch {
-                                                    push(
-                                                        client,
-                                                        "http://$serverIP/cmd?auth=$serverPassword",
-                                                        "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveUp\"}}"
-                                                    ).await()
-                                                    updatePositionOfShutter(
-                                                        client,
-                                                        currentShutter
-                                                    ) { updatedShutter ->
-                                                        currentShutter = updatedShutter
+                                                    if (previewPosition == -1) {
+                                                        currentShutter!!.position.toString() + "%"
+                                                    } else {
+                                                        "$previewPosition%"
                                                     }
-                                                }
-                                            },
-                                            modifier = Modifier
-                                                .height(Dp(40f))
-                                                .padding(top = Dp(5f))
-                                        )
-                                        {
-                                            Text(text = "Up")
+                                                },
+                                                textAlign = TextAlign.Center
+                                            )
                                         }
-                                    }
 
-                                    item {
-                                        Button(
-                                            onClick = {
-                                                GlobalScope.launch {
-                                                    push(
-                                                        client,
-                                                        "http://$serverIP/cmd?auth=$serverPassword",
-                                                        "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"stop\"}}"
-                                                    ).await()
-                                                }
-                                            },
-                                            modifier = Modifier
-                                                .height(Dp(40f))
-                                                .padding(top = Dp(5f))
-                                        )
-                                        {
-                                            Text(text = "Stop")
-                                        }
                                     }
-
-                                    item {
-                                        Button(
-                                            onClick = {
-                                                moveJob?.cancel()
-                                                moveJob = GlobalScope.launch {
-                                                    push(
-                                                        client,
-                                                        "http://$serverIP/cmd?auth=$serverPassword",
-                                                        "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveDown\"}}"
-                                                    ).await()
-                                                    updatePositionOfShutter(
-                                                        client,
-                                                        currentShutter
-                                                    ) { updatedShutter ->
-                                                        currentShutter = updatedShutter
+                                    LazyColumn(
+                                        modifier = Modifier
+                                            .padding(top = Dp(38f))
+                                    ) {
+                                        item {
+                                            Button(
+                                                onClick = {
+                                                    moveJob?.cancel()
+                                                    moveJob = GlobalScope.launch {
+                                                        push(
+                                                            client,
+                                                            "http://$serverIP/cmd?auth=$serverPassword",
+                                                            "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveUp\"}}"
+                                                        ).await()
+                                                        updatePositionOfShutter(
+                                                            client,
+                                                            currentShutter, serverIP, serverPassword
+                                                        ) { updatedShutter ->
+                                                            currentShutter = updatedShutter
+                                                        }
                                                     }
-                                                }
-                                            },
-                                            modifier = Modifier
-                                                .height(Dp(40f))
-                                                .padding(top = Dp(5f))
-                                        )
-                                        {
-                                            Text(text = "Down")
+                                                },
+                                                modifier = Modifier
+                                                    .height(Dp(40f))
+                                                    .padding(top = Dp(5f))
+                                            )
+                                            {
+                                                Text(text = "Up")
+                                            }
                                         }
-                                    }
 
+                                        item {
+                                            Button(
+                                                onClick = {
+                                                    GlobalScope.launch {
+                                                        push(
+                                                            client,
+                                                            "http://$serverIP/cmd?auth=$serverPassword",
+                                                            "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"stop\"}}"
+                                                        ).await()
+                                                    }
+                                                },
+                                                modifier = Modifier
+                                                    .height(Dp(40f))
+                                                    .padding(top = Dp(5f))
+                                            )
+                                            {
+                                                Text(text = "Stop")
+                                            }
+                                        }
+
+                                        item {
+                                            Button(
+                                                onClick = {
+                                                    moveJob?.cancel()
+                                                    moveJob = GlobalScope.launch {
+                                                        push(
+                                                            client,
+                                                            "http://$serverIP/cmd?auth=$serverPassword",
+                                                            "{\"XC_FNC\":\"SendGenericCmd\",\"id\":\"" + (currentShutter?.sid) + "\",\"data\":{\"cmd\": \"moveDown\"}}"
+                                                        ).await()
+                                                        updatePositionOfShutter(
+                                                            client,
+                                                            currentShutter, serverIP, serverPassword
+                                                        ) { updatedShutter ->
+                                                            currentShutter = updatedShutter
+                                                        }
+                                                    }
+                                                },
+                                                modifier = Modifier
+                                                    .height(Dp(40f))
+                                                    .padding(top = Dp(5f))
+                                            )
+                                            {
+                                                Text(text = "Down")
+                                            }
+                                        }
+
+                                    }
                                 }
                             }
                         }

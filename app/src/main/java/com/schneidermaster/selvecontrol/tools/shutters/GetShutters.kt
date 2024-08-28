@@ -11,7 +11,7 @@ import kotlinx.coroutines.async
 import okhttp3.OkHttpClient
 
 @OptIn(DelicateCoroutinesApi::class)
-fun getShutters(client: OkHttpClient, context: Context): Deferred<List<Shutter>> {
+fun getShutters(client: OkHttpClient, context: Context, serverIp: String, serverPassword: String): Deferred<List<Shutter>> {
     return GlobalScope.async {
         val shutters: List<Shutter>
 
@@ -43,10 +43,12 @@ fun getShutters(client: OkHttpClient, context: Context): Deferred<List<Shutter>>
         Log.println(Log.WARN, "SelveControl", "shutterData.json not found\nFetching Shutter Data from Server...")
 
         val deferredStatesResponse =
-            get(client, "http://192.168.188.143/cmd?XC_FNC=GetStates&auth=Auablume")
+            get(client, "http://$serverIp/cmd?XC_FNC=GetStates&auth=$serverPassword")
 
         val statesResponse = deferredStatesResponse.await()
         val statesJsonResponse = statesResponse.body?.string()
+
+        println(statesJsonResponse)
 
         if (statesJsonResponse != null) {
             val jsonObject = JsonParser.parseString(statesJsonResponse).asJsonObject
@@ -68,7 +70,7 @@ fun getShutters(client: OkHttpClient, context: Context): Deferred<List<Shutter>>
         }
 
         shutters.forEach{
-            it.name = getName(client, it).await()
+            it.name = getName(client, it, serverIp, serverPassword).await()
         }
 
         return@async shutters

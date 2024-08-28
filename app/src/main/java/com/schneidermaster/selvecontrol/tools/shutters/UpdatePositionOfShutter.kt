@@ -9,6 +9,8 @@ import okhttp3.OkHttpClient
 suspend fun updatePositionOfShutter(
     client: OkHttpClient,
     currentShutter: Shutter?,
+    serverIp: String,
+    serverPassword: String,
     onUpdateShutter: (Shutter?) -> Unit
 ) {
     var currentShutter1 = currentShutter
@@ -18,7 +20,7 @@ suspend fun updatePositionOfShutter(
         }
         val response = get(
             client,
-            "http://192.168.188.143/cmd?XC_FNC=GetStates&auth=Auablume"
+            "http://$serverIp/cmd?XC_FNC=GetStates&auth=$serverPassword"
         ).await()
         val shutter =
             JsonParser.parseString(
