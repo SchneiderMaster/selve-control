@@ -602,7 +602,7 @@ class MainActivity : ComponentActivity() {
                                                 modifier = Modifier
                                                     .background(color = Color(0.8f, 0.8f, 0.8f, 0.7f), shape = CircleShape)
                                                     .padding(2.dp)
-                                                    .width(35.dp)
+                                                    .width(40.dp)
                                             )
                                         }
 
