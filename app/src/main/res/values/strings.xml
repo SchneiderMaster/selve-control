@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">Selve Control</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">From the Square world,\nHello, %1$s!</string>
-    <string name="tile_label">Example tile</string>
-    <string name="complication_label">Example complication</string>
+    <string name="tile_label">Selve Control</string>
+    <string name="up">Up</string>
+    <string name="down">Down</string>
+    <string name="Stop">Stop</string>
+    <string name="tile_text">Open Selve Control</string>
+    <string name="server_ip">Server IP</string>
+    <string name="server_password">Server Password</string>
+    <string name="server_wrong">Wrong Server IP/ Password!</string>
+    <string name="accept">Accept</string>
+    <string name="loading">Receiving data from shutters...</string>
+    <string name="reset_confirmation">Do you want to reset all data?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Selve Control</string>
+    <string name="tile_label">Selve Control</string>
+    <string name="up">Hoch</string>
+    <string name="down">Runter</string>
+    <string name="Stop">Stop</string>
+    <string name="tile_text">Selve Control öffnen</string>
+    <string name="server_ip">Server IP</string>
+    <string name="server_password">Server Passwort</string>
+    <string name="server_wrong">Falsche Server IP/Passwort!</string>
+    <string name="accept">Übernehmen</string>
+    <string name="loading">Daten von Rolläden sammeln...</string>
+    <string name="reset_confirmation">Willst du alle Daten zurücksetzen?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+</resources>

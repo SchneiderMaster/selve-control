@@ -3,7 +3,6 @@
 package com.schneidermaster.selvecontrol.presentation
 
 import android.content.Context
-import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
@@ -17,7 +16,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -57,8 +55,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -145,7 +141,7 @@ class MainActivity : ComponentActivity() {
 
     @OptIn(ExperimentalFoundationApi::class)
     @Composable
-    fun WearApp(debugging: Boolean = false) {
+    fun WearApp() {
 
         val sharedPreferences =
             getSharedPreferences("com.schneidermaster.selvecontrol", MODE_PRIVATE)
@@ -176,6 +172,7 @@ class MainActivity : ComponentActivity() {
 
         var cycleJob: Job? = null
         var moveJob: Job? = null
+        var updateJob: Job? = null
 
         var isLoading by remember { mutableStateOf(true) }
         var currentShutter by remember { mutableStateOf<Shutter?>(null) }
@@ -195,13 +192,7 @@ class MainActivity : ComponentActivity() {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(MaterialTheme.colors.background)
-                    .combinedClickable(
-                        onClick = {},
-                        onLongClick = {
-                            isResetting = true
-                        }
-                    ),
+                    .background(MaterialTheme.colors.background),
                 contentAlignment = Alignment.Center
             )
             {
@@ -215,14 +206,14 @@ class MainActivity : ComponentActivity() {
                                 serverIpText = it
                             },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
-                            label = { Text("Server IP") })
+                            label = { Text(resources.getString(R.string.server_ip)) })
                         TextField(
                             value = serverPasswordText,
                             onValueChange = {
                                 serverPasswordText = it
                             },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
-                            label = { Text("Server Password") })
+                            label = { Text(resources.getString(R.string.server_password)) })
 
                         Button(onClick = {
 
@@ -240,7 +231,7 @@ class MainActivity : ComponentActivity() {
                                     serverIP = serverIpText
 
                                 } catch (e: Exception) {
-                                    val text = "Wrong Server IP/ Password!"
+                                    val text = resources.getString(R.string.server_wrong)
                                     val duration = Toast.LENGTH_SHORT
 
                                     Toast.makeText(this@MainActivity, text, duration).show()
@@ -249,20 +240,30 @@ class MainActivity : ComponentActivity() {
 
 
                         }) {
-                            Text("Accept")
+                            Text(resources.getString(R.string.accept))
                         }
 
                     }
                 } else {
-                    if (isLoading && !debugging) {
+                    if (isLoading) {
                         LaunchedEffect(Unit) {
                             GlobalScope.launch {
-                                shutters = getShutters(client, this@MainActivity, serverIP, serverPassword).await()
+                                shutters = getShutters(
+                                    client,
+                                    this@MainActivity,
+                                    serverIP,
+                                    serverPassword
+                                ).await()
                                     .toMutableList()
                                 val firstShutter = shutters!![0]
                                 if (firstShutter.name == null) {
                                     firstShutter.name =
-                                        getName(client, firstShutter, serverIP, serverPassword).await()
+                                        getName(
+                                            client,
+                                            firstShutter,
+                                            serverIP,
+                                            serverPassword
+                                        ).await()
                                 }
                                 currentShutter = firstShutter
                                 updateShutters(shutters!!)
@@ -278,25 +279,30 @@ class MainActivity : ComponentActivity() {
                                     .padding(bottom = Dp(10f))
                             )
                             Text(
-                                text = "Receiving data from shutters...",
+                                text = resources.getString(R.string.loading),
                                 textAlign = TextAlign.Center
                             )
                         }
 
                     } else {
-                        if(isResetting) {
+                        if (isResetting) {
                             Alert(
-                                contentPadding = PaddingValues(start = 10.dp, end = 10.dp, top = 24.dp, bottom = 32.dp),
+                                contentPadding = PaddingValues(
+                                    start = 10.dp,
+                                    end = 10.dp,
+                                    top = 24.dp,
+                                    bottom = 32.dp
+                                ),
                                 title = {
                                     Text(
-                                        "Do you want to reset all data?",
+                                        resources.getString(R.string.reset_confirmation),
                                         textAlign = TextAlign.Center
                                     )
                                 },
                                 negativeButton = {
                                     Button(onClick = {
                                         isResetting = false
-                                    }){ Text("No")}
+                                    }) { Text(resources.getString(R.string.no)) }
                                 },
                                 positiveButton = {
                                     Button(onClick = {
@@ -315,13 +321,12 @@ class MainActivity : ComponentActivity() {
                                         this@MainActivity.deleteFile("shutterData.json")
 
                                         editor.apply()
-                                    }) {Text("Yes")}
+                                    }) { Text(resources.getString(R.string.yes)) }
                                 }
                             ) {
 
                             }
-                        }
-                        else {
+                        } else {
 
                             Box(
                                 contentAlignment = Alignment.TopCenter
@@ -341,6 +346,7 @@ class MainActivity : ComponentActivity() {
 
                                             moveJob?.cancel()
                                             cycleJob?.cancel()
+                                            updateJob?.cancel()
                                             currentShutter = previousShutter
                                             cycleJob = GlobalScope.launch {
                                                 withContext(Dispatchers.IO) {
@@ -348,11 +354,7 @@ class MainActivity : ComponentActivity() {
                                                         client,
                                                         previousShutter, serverIP, serverPassword
                                                     ) { updatedShutter ->
-                                                        // there may be a problem with this still happening
-                                                        // after the previous job was already cancelled,
-                                                        // thus currentShutter gets inserted into shutters
-                                                        // multiple times
-                                                        scope.launch {
+                                                        updateJob = scope.launch {
                                                             withContext(Dispatchers.Main) {
                                                                 currentShutter = updatedShutter
                                                                 updateShutters(shutters!!)
@@ -376,6 +378,12 @@ class MainActivity : ComponentActivity() {
                                         modifier = Modifier
                                             .width(Dp(110f))
                                             .height(Dp(42f))
+                                            .combinedClickable(
+                                                onClick = {},
+                                                onLongClick = {
+                                                    isResetting = true
+                                                }
+                                            ),
                                     ) {
                                         Text(
                                             text = currentShutter?.name
@@ -398,6 +406,7 @@ class MainActivity : ComponentActivity() {
 
                                             moveJob?.cancel()
                                             cycleJob?.cancel()
+                                            updateJob?.cancel()
                                             currentShutter = nextShutter
                                             cycleJob = GlobalScope.launch {
                                                 withContext(Dispatchers.IO) {
@@ -405,7 +414,7 @@ class MainActivity : ComponentActivity() {
                                                         client,
                                                         nextShutter, serverIP, serverPassword
                                                     ) { updatedShutter ->
-                                                        scope.launch {
+                                                        updateJob = scope.launch {
                                                             withContext(Dispatchers.Main) {
                                                                 currentShutter = updatedShutter
                                                                 updateShutters(shutters!!)
@@ -500,14 +509,12 @@ class MainActivity : ComponentActivity() {
                                         ) {
                                             val parentHeight = constraints.maxHeight
 
-                                            val yOffset = if (debugging) {
-                                                (parentHeight - parentHeight * 0.4).roundToInt()
-                                            } else {
+                                            val yOffset =
                                                 if (previewPosition == -1) {
                                                     (parentHeight - parentHeight * currentShutter!!.position!!.toFloat() / 100).roundToInt()
                                                 } else {
                                                     (parentHeight - parentHeight * previewPosition.toFloat() / 100).roundToInt()
-                                                }
+
                                             }
 
                                             Box(
@@ -545,15 +552,12 @@ class MainActivity : ComponentActivity() {
 
                                             }
                                             Text(
-                                                text = if (debugging) {
-                                                    "40%"
-                                                } else {
+                                                text =
                                                     if (previewPosition == -1) {
                                                         currentShutter!!.position.toString() + "%"
                                                     } else {
                                                         "$previewPosition%"
-                                                    }
-                                                },
+                                                    },
                                                 textAlign = TextAlign.Center
                                             )
                                         }
@@ -586,7 +590,7 @@ class MainActivity : ComponentActivity() {
                                                     .padding(top = Dp(5f))
                                             )
                                             {
-                                                Text(text = "Up")
+                                                Text(text = resources.getString(R.string.up))
                                             }
                                         }
 
@@ -606,7 +610,7 @@ class MainActivity : ComponentActivity() {
                                                     .padding(top = Dp(5f))
                                             )
                                             {
-                                                Text(text = "Stop")
+                                                Text(text = resources.getString(R.string.Stop))
                                             }
                                         }
 
@@ -633,7 +637,7 @@ class MainActivity : ComponentActivity() {
                                                     .padding(top = Dp(5f))
                                             )
                                             {
-                                                Text(text = "Down")
+                                                Text(text = resources.getString(R.string.down))
                                             }
                                         }
 
@@ -650,17 +654,6 @@ class MainActivity : ComponentActivity() {
 
     private fun updateShutters(shutters: List<Shutter>) {
         this.shutters = shutters
-    }
-
-    @Preview(
-        device = Devices.WEAR_OS_SMALL_ROUND,
-        showSystemUi = true,
-        showBackground = true,
-        uiMode = Configuration.UI_MODE_TYPE_WATCH
-    )
-    @Composable
-    fun DefaultPreview() {
-        WearApp(true)
     }
 }
 
