@@ -14,4 +14,5 @@
     <string name="reset_confirmation">Willst du alle Daten zurücksetzen?</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
+    <string name="delete_confirmation">Willst du alle Rolladen-Daten löschen?</string>
 </resources>

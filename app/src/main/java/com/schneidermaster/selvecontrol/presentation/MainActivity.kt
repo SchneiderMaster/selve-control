@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -184,6 +185,7 @@ class MainActivity : ComponentActivity() {
         var serverIpText by remember { mutableStateOf("") }
         var serverPasswordText by remember { mutableStateOf("") }
         var isResetting by remember { mutableStateOf(false) }
+        var isDeleting by remember { mutableStateOf(false) }
 
 
 
@@ -326,7 +328,42 @@ class MainActivity : ComponentActivity() {
                             ) {
 
                             }
-                        } else {
+                        }
+                        else if(isDeleting){
+
+                            Alert(
+                                contentPadding = PaddingValues(
+                                    start = 10.dp,
+                                    end = 10.dp,
+                                    top = 24.dp,
+                                    bottom = 32.dp
+                                ),
+                                title = {
+                                    Text(
+                                        resources.getString(R.string.delete_confirmation),
+                                        textAlign = TextAlign.Center
+                                    )
+                                },
+                                negativeButton = {
+                                    Button(onClick = {
+                                        isDeleting = false
+                                    }) { Text(resources.getString(R.string.no)) }
+                                },
+                                positiveButton = {
+                                    Button(onClick = {
+
+                                        isDeleting = false
+                                        isLoading = true
+
+                                        this@MainActivity.deleteFile("shutterData.json")
+                                    }) { Text(resources.getString(R.string.yes)) }
+                                }
+                            ) {
+
+                            }
+
+                        }
+                        else {
 
                             Box(
                                 contentAlignment = Alignment.TopCenter
@@ -379,7 +416,9 @@ class MainActivity : ComponentActivity() {
                                             .width(Dp(110f))
                                             .height(Dp(42f))
                                             .combinedClickable(
-                                                onClick = {},
+                                                onClick = {
+                                                    isDeleting = true
+                                                },
                                                 onLongClick = {
                                                     isResetting = true
                                                 }
@@ -558,7 +597,12 @@ class MainActivity : ComponentActivity() {
                                                     } else {
                                                         "$previewPosition%"
                                                     },
-                                                textAlign = TextAlign.Center
+                                                color = Color.Black,
+                                                textAlign = TextAlign.Center,
+                                                modifier = Modifier
+                                                    .background(color = Color(0.8f, 0.8f, 0.8f, 0.7f), shape = CircleShape)
+                                                    .padding(2.dp)
+                                                    .width(35.dp)
                                             )
                                         }
 
