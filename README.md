@@ -13,7 +13,10 @@ It comes with controls such as sending your shutter up and down, stopping it in 
 ## Quick Showcase:
 
 Since most people seeing this probably won't have Shutters by Selve to test this out, here is a quick showcase of how the app works:
-> TODO: add video
+
+https://github.com/user-attachments/assets/fcbfa86c-306f-42c9-86f5-7beacb2ae1a1
+
+---
 
 ## Build it yourself
 
@@ -26,6 +29,12 @@ Afterwards, just hit run.
 ## Setup
 
 Once you've setup Selve Control on your device, you are prompted to enter a Server IP and password. These have to match what is configured in your Selve Home Server 2.
+
+---
+
+### Quick Access
+
+For quick access, there exists a tile that you can add to your watch, which quickly launches Selve Control.
 
 ---
 
