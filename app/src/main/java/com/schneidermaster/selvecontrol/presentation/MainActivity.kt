@@ -123,8 +123,26 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onResume() {
+        super.onResume()
+        connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        callback = object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                super.onAvailable(network)
+                connectivityManager.bindProcessToNetwork(network)
+                println("Network acquired")
+            }
+        }
+
+        connectivityManager.requestNetwork(
+            NetworkRequest.Builder().addTransportType(NetworkCapabilities.TRANSPORT_WIFI).build(),
+            callback
+        )
+    }
+
+    override fun onPause() {
+        super.onPause()
+        println("Destroying.......")
         if (!isChangingConfigurations) {
             val gson = GsonBuilder()
                 .serializeNulls()
